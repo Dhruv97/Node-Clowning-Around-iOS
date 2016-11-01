@@ -1,2 +1,2 @@
 # Node-Clowning-Around-iOS
-iOS version of https://nodemoreclowns.org (MHacks 8 Project)
+iOS version of https://nodemoreclowns.herokuapp.com (MHacks 8 Project)
