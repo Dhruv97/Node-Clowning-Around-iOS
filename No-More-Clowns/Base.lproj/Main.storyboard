@@ -18,25 +18,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="k6j-4t-oEY"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="k6j-4t-oEY">
+                                <frame key="frameInset" width="1000" height="1000"/>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXf-Fu-vCb">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="MK4-JI-zBZ"/>
                                     <constraint firstAttribute="width" constant="209" id="oXa-J1-6lP"/>
                                 </constraints>
                                 <state key="normal" image="report"/>
+                                <connections>
+                                    <action selector="reportSighting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Qq-gu-a7b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="THI-fC-Hn9">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="fYX-3K-UQk"/>
+                                    <constraint firstAttribute="width" constant="39" id="vKl-Xm-kEf"/>
+                                </constraints>
+                                <state key="normal" image="center"/>
+                                <connections>
+                                    <action selector="centerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="17N-Vz-azr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kXf-Fu-vCb" secondAttribute="bottom" constant="175" id="FLW-t9-jyn"/>
                             <constraint firstAttribute="trailing" secondItem="k6j-4t-oEY" secondAttribute="trailing" id="LRQ-l7-ZHk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="THI-fC-Hn9" secondAttribute="bottom" constant="381" id="NNE-kL-3Um"/>
+                            <constraint firstAttribute="trailing" secondItem="THI-fC-Hn9" secondAttribute="trailing" constant="16" id="ZMK-TS-fdp"/>
                             <constraint firstItem="k6j-4t-oEY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="f3G-Se-bPQ"/>
                             <constraint firstItem="kXf-Fu-vCb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kYV-rb-k7N"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="k6j-4t-oEY" secondAttribute="bottom" id="wur-so-acv"/>
                             <constraint firstItem="k6j-4t-oEY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xlU-XV-IW6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="k6j-4t-oEY" id="X7v-hT-SMT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,6 +64,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="center" width="340" height="341"/>
         <image name="report" width="370" height="120"/>
     </resources>
 </document>

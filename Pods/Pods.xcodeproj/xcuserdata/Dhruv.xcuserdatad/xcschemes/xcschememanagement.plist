@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Firebase.xcscheme</key>
+		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4982F3084B981C1E6DCF8B3A064BA2DB</key>
+		<key>00103D6C821BE85971C563025527BA5D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8C72D9A36C0B0EB664A564E326B0FB33</key>
+		<key>C4FE027E6AABF7E0DD94C01D81133521</key>
 		<dict>
 			<key>primary</key>
 			<true/>

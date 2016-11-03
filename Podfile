@@ -6,5 +6,5 @@ target 'No-More-Clowns' do
   use_frameworks!
 
   # Pods for No-More-Clowns
-   pod 'Firebase'
+   pod 'Firebase/Core'
 end
