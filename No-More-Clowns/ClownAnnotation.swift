@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import MapKit
 class ClownAnnotation: NSObject, MKAnnotation {
     
     
