@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        IQKeyboardManager.sharedManager().enable = true
+       // IQKeyboardManager.sharedManager().enable = true
         
         return true
     }

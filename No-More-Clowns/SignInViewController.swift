@@ -12,9 +12,16 @@ import FBSDKLoginKit
 import Firebase
 import FirebaseAuth
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var fbBtn: UIButton!
+    
+    @IBOutlet weak var emailField: UITextField!
+    
+    
+    @IBOutlet weak var passwordField: UITextField!
+    
+    
     
     // Log in user using Facebook account
     @IBAction func fbBtnPressed(_ sender: AnyObject) {
@@ -66,6 +73,14 @@ class SignInViewController: UIViewController {
         
     }
     
+    // Sign in/up without Facebook
+    
+    @IBAction func signInBtnPressed(_ sender: AnyObject) {
+        
+        
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,8 +88,27 @@ class SignInViewController: UIViewController {
         fbBtn.setImage(UIImage(named:"fb2.png"), for: .highlighted)
         
         self.navigationController?.isNavigationBarHidden = true
+        
+        emailField.delegate = self
+        passwordField.delegate = self
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
     }
 
+    func dismissKeyboard() {
+        
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
     
     
 }
