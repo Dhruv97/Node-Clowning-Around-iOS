@@ -14,7 +14,7 @@
 		FC45DDDE1DCDB2F300E4499B /* GFGeoHash.m in Sources */ = {isa = PBXBuildFile; fileRef = FC45DDD71DCDB2F300E4499B /* GFGeoHash.m */; };
 		FC45DDDF1DCDB2F300E4499B /* GFGeoHashQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FC45DDD91DCDB2F300E4499B /* GFGeoHashQuery.m */; };
 		FC45DDE01DCDB2F300E4499B /* GFQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FC45DDDB1DCDB2F300E4499B /* GFQuery.m */; };
-		FC45DDE31DCDB3CB00E4499B /* NSObject+temp.m in Sources */ = {isa = PBXBuildFile; fileRef = FC45DDE21DCDB3CB00E4499B /* NSObject+temp.m */; };
+		FC45DDEB1DCEF5FE00E4499B /* ClownAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */; };
 		FCE6C9471DC84A7E0064CF46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE6C9461DC84A7E0064CF46 /* AppDelegate.swift */; };
 		FCE6C9491DC84A7E0064CF46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE6C9481DC84A7E0064CF46 /* ViewController.swift */; };
 		FCE6C94C1DC84A7E0064CF46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE6C94A1DC84A7E0064CF46 /* Main.storyboard */; };
@@ -43,9 +43,8 @@
 		FC45DDD91DCDB2F300E4499B /* GFGeoHashQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFGeoHashQuery.m; sourceTree = "<group>"; };
 		FC45DDDA1DCDB2F300E4499B /* GFQuery+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GFQuery+Private.h"; sourceTree = "<group>"; };
 		FC45DDDB1DCDB2F300E4499B /* GFQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFQuery.m; sourceTree = "<group>"; };
-		FC45DDE11DCDB3CB00E4499B /* NSObject+temp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+temp.h"; sourceTree = "<group>"; };
-		FC45DDE21DCDB3CB00E4499B /* NSObject+temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+temp.m"; sourceTree = "<group>"; };
 		FC45DDE71DCEEFD700E4499B /* No-More-Clowns-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "No-More-Clowns-Bridging-Header.h"; sourceTree = "<group>"; };
+		FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClownAnnotation.swift; sourceTree = "<group>"; };
 		FCE6C9461DC84A7E0064CF46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCE6C9481DC84A7E0064CF46 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FCE6C94B1DC84A7E0064CF46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -122,6 +121,22 @@
 			path = Implementation;
 			sourceTree = "<group>";
 		};
+		FC45DDE81DCEF5CA00E4499B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FC45DDE91DCEF5D000E4499B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FCE6C9481DC84A7E0064CF46 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		FCE6C93A1DC84A7D0064CF46 = {
 			isa = PBXGroup;
 			children = (
@@ -136,15 +151,14 @@
 			isa = PBXGroup;
 			children = (
 				FC45DDCA1DCDB2F300E4499B /* GeoFire */,
+				FC45DDE81DCEF5CA00E4499B /* Model */,
+				FC45DDE91DCEF5D000E4499B /* Controller */,
 				FCE6C9461DC84A7E0064CF46 /* AppDelegate.swift */,
-				FCE6C9481DC84A7E0064CF46 /* ViewController.swift */,
 				FCE6C94A1DC84A7E0064CF46 /* Main.storyboard */,
 				FCE6C94D1DC84A7E0064CF46 /* Assets.xcassets */,
 				FCE6C94F1DC84A7E0064CF46 /* LaunchScreen.storyboard */,
 				FC0D44D41DC992E7003E1BFA /* GoogleService-Info.plist */,
 				FCE6C9521DC84A7E0064CF46 /* Info.plist */,
-				FC45DDE11DCDB3CB00E4499B /* NSObject+temp.h */,
-				FC45DDE21DCDB3CB00E4499B /* NSObject+temp.m */,
 				FC45DDE71DCEEFD700E4499B /* No-More-Clowns-Bridging-Header.h */,
 			);
 			path = "No-More-Clowns";
@@ -278,10 +292,10 @@
 				FC45DDDD1DCDB2F300E4499B /* GFBase32Utils.m in Sources */,
 				FCE6C9491DC84A7E0064CF46 /* ViewController.swift in Sources */,
 				FC45DDDE1DCDB2F300E4499B /* GFGeoHash.m in Sources */,
-				FC45DDE31DCDB3CB00E4499B /* NSObject+temp.m in Sources */,
 				FCE6C9471DC84A7E0064CF46 /* AppDelegate.swift in Sources */,
 				FC45DDDC1DCDB2F300E4499B /* GeoFire.m in Sources */,
 				FC45DDDF1DCDB2F300E4499B /* GFGeoHashQuery.m in Sources */,
+				FC45DDEB1DCEF5FE00E4499B /* ClownAnnotation.swift in Sources */,
 				FC45DDE01DCDB2F300E4499B /* GFQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,7 +426,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Dhruv.No-More-Clowns";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "No-More-Clowns-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "No-More-Clowns/No-More-Clowns-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -428,7 +442,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Dhruv.No-More-Clowns";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "No-More-Clowns-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "No-More-Clowns/No-More-Clowns-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -6,4 +6,6 @@
 //  Copyright © 2016 Dhruv Upadhyay. All rights reserved.
 //
 
+// bridging header for GeoFire
+// Added to Build Settings
 #import "GeoFire.h"

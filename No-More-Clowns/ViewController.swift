@@ -9,6 +9,8 @@
 
 import UIKit
 import MapKit
+import Firebase
+import FirebaseDatabase
 
 // include mapview delegate and location manager delegate
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
@@ -21,16 +23,32 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     // variable to see if map was centered on user location on app start
     var mapHasCenteredOnce = false
     
-    var tracking = false
+    var tracking = true
     
-    var geoFire: GeoFire!
+    // FireBase reference created
+    var fireBaseRef: FIRDatabaseReference!
     
     @IBOutlet weak var centerBtn: UIButton!
     
     @IBAction func reportSighting(_ sender: AnyObject) {
+        
+        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        
+        createSightings()
+        
     }
     
     
+    func createSightings() {
+        
+        let location = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        let lat = location.coordinate.latitude
+        let long = location.coordinate.longitude
+        let sighting: [String: Double] = ["lat" : lat, "long": long]
+        
+        fireBaseRef.child("Sightings").childByAutoId().setValue(sighting)
+        
+    }
     
     
     override func viewDidLoad() {
@@ -48,7 +66,26 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         } else {
              mapView.userTrackingMode = MKUserTrackingMode.none
         }
-      
+        
+        // set fireBaseRef to the Firebase database reference
+        fireBaseRef = FIRDatabase.database().reference()
+        
+        
+        fireBaseRef.child("Sightings").queryOrderedByKey().observe(.childAdded, with: {
+        
+            (snapshot) in
+            
+            let value = snapshot.value as? NSDictionary
+            let lat = value!["lat"] as! CLLocationDegrees
+            let long = value!["long"] as! CLLocationDegrees
+            let loc = CLLocation(latitude: lat, longitude: long)
+            let anno = ClownAnnotation(coordinate: loc.coordinate)
+            self.mapView.addAnnotation(anno)
+            
+        
+        })
+        
+        
         
     }
     
@@ -58,6 +95,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
           // call function to get authorization for user location when the view appears
         locationAuthStatus()
     }
+    
+ 
     
     // function for getting authorization from user to use location
     func locationAuthStatus() {
@@ -116,6 +155,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     // function for setting custom annotation
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
+       let annoId = "Clown"
+        
         // declare var for custom annotation
         var annotationView: MKAnnotationView?
         if annotation.isKind(of: MKUserLocation.self) {
@@ -123,10 +164,61 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             // set custom annotation
              annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
             annotationView?.image = UIImage(named: "person")
+            
+            
+        } else if let dequeuedAnno = mapView.dequeueReusableAnnotationView(withIdentifier: annoId) {
+            
+            annotationView = dequeuedAnno
+            annotationView?.annotation = annotation
+            
+        } else {
+            
+            let av = MKAnnotationView(annotation: annotation, reuseIdentifier: annoId)
+            av.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            annotationView = av
+        }
+        
+        
+        if let annotationView = annotationView, let anno = annotation as? ClownAnnotation {
+            
+            annotationView.canShowCallout = true
+            annotationView.image = UIImage(named: "icon.png")
+        /*
+            let btn = UIButton()
+            btn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            btn.setImage(UIImage(named: "map"), for: .normal)
+            annotationView.rightCalloutAccessoryView = btn
+        */
+            
         }
         
         return annotationView
     }
+    
+
+    
+   /* func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        if let anno = view.annotation as? ClownAnnotation {
+            
+            var place: MKPlacemark!
+            
+            if #available(iOS 10.0, *) {
+                 place = MKPlacemark(coordinate: anno.coordinate)
+            } else {
+                place = MKPlacemark(coordinate: anno.coordinate, addressDictionary: nil)
+            }
+            let dest = MKMapItem(placemark: place)
+            dest.name = "Clown Sighting"
+            let regionDist: CLLocationDistance = 1000
+            let regionSpan = MKCoordinateRegionMakeWithDistance(anno.coordinate, regionDist, regionDist)
+            
+            let options = [MKLaunchOptionsMapCenterKey: NSValue (mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span), MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving] as [String : Any]
+            
+            MKMapItem.openMaps(with: [dest], launchOptions: options)
+        }
+        
+    }*/
     
     // center map view back to user location on center button press
     @IBAction func centerPressed(_ sender: AnyObject) {
@@ -138,6 +230,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         
     }
+    
+    
     /*
     @IBAction func tracking(_ sender: AnyObject) {
         
