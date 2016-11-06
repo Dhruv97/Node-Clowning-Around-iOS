@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M6m-8h-vCx">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sign In View Controller-->
+        <scene sceneID="57u-w6-Y5P">
+            <objects>
+                <viewController id="M6m-8h-vCx" customClass="SignInViewController" customModule="No_More_Clowns" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4jf-hu-fXI"/>
+                        <viewControllerLayoutGuide type="bottom" id="0mE-XP-Fsz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nyq-u5-bVP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text" translatesAutoresizingMaskIntoConstraints="NO" id="yLP-W7-DFB">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="285" id="Myf-k2-VWm"/>
+                                    <constraint firstAttribute="height" constant="94" id="eRY-G7-hwb"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="IIl-xN-4Nh">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="151" id="HVC-CN-mjv"/>
+                                    <constraint firstAttribute="width" constant="152" id="JwW-23-fia"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" © Node Clowning Around 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRf-Jx-PCN">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="2Et-cv-hog"/>
+                                    <constraint firstAttribute="width" constant="242" id="uLw-oh-26C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epa-QB-IAc">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="I1U-h8-sQG"/>
+                                    <constraint firstAttribute="width" constant="228" id="gc0-6T-3CW"/>
+                                </constraints>
+                                <state key="normal" image="fb1"/>
+                                <connections>
+                                    <action selector="fbBtnPressed:" destination="M6m-8h-vCx" eventType="touchUpInside" id="vu8-wP-Pup"/>
+                                    <segue destination="CIC-Km-Q0E" kind="show" id="HEk-Ic-v0f"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.87450980389999999" green="0.20392156859999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="IIl-xN-4Nh" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" id="0Gi-ZG-BxD"/>
+                            <constraint firstItem="iRf-Jx-PCN" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" id="A5z-f2-8YT"/>
+                            <constraint firstItem="0mE-XP-Fsz" firstAttribute="top" secondItem="iRf-Jx-PCN" secondAttribute="bottom" constant="8" id="CMo-ta-Ixe"/>
+                            <constraint firstItem="epa-QB-IAc" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" id="QlJ-go-8hS"/>
+                            <constraint firstItem="yLP-W7-DFB" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" id="WTW-1M-0pj"/>
+                            <constraint firstItem="epa-QB-IAc" firstAttribute="top" secondItem="IIl-xN-4Nh" secondAttribute="bottom" constant="63" id="caJ-Uj-gsq"/>
+                            <constraint firstItem="yLP-W7-DFB" firstAttribute="top" secondItem="4jf-hu-fXI" secondAttribute="bottom" constant="43" id="fH5-58-Klq"/>
+                            <constraint firstItem="IIl-xN-4Nh" firstAttribute="top" secondItem="yLP-W7-DFB" secondAttribute="bottom" constant="57" id="qAq-6O-4jk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="JMQ-l6-Agy"/>
+                    <connections>
+                        <outlet property="fbBtn" destination="epa-QB-IAc" id="BFv-jz-8TM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2jn-8N-ihs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1028" y="873.91304347826099"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="yID-Nq-pjI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" id="CIC-Km-Q0E" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hsC-kH-72d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1737.5999999999999" y="791.60419790104959"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="fb1" width="375" height="120"/>
+        <image name="logo" width="320" height="320"/>
+        <image name="text" width="372" height="107"/>
+    </resources>
+</document>

@@ -8,4 +8,7 @@ target 'No-More-Clowns' do
   # Pods for No-More-Clowns
    pod 'Firebase/Core'
    pod 'Firebase/Database'
+   pod 'Firebase/Auth'
+   pod 'Firebase/Storage'
+   pod 'FBSDKLoginKit'
 end

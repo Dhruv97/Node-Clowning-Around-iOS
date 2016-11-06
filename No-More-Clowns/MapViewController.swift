@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  No-More-Clowns
 //
 //  Created by Dhruv Upadhyay on 10/31/16.
@@ -13,7 +13,7 @@ import Firebase
 import FirebaseDatabase
 
 // include mapview delegate and location manager delegate
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -31,8 +31,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var centerBtn: UIButton!
     
     @IBAction func reportSighting(_ sender: AnyObject) {
-        
-        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         
         createSightings()
         
@@ -54,7 +52,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     override func viewDidLoad() {
        
         super.viewDidLoad()
-       
+    
         // set map View delegate
         mapView.delegate = self
         
@@ -179,7 +177,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         
         
-        if let annotationView = annotationView, let anno = annotation as? ClownAnnotation {
+        if let annotationView = annotationView {
             
             annotationView.canShowCallout = true
             annotationView.image = UIImage(named: "icon.png")

@@ -13,7 +13,7 @@ class ClownAnnotation: NSObject, MKAnnotation {
     
     
     var coordinate = CLLocationCoordinate2D()
-      var message: String
+    var message: String
     var title:  String?
     init(coordinate: CLLocationCoordinate2D) {
         
