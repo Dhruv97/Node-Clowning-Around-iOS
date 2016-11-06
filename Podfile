@@ -7,4 +7,5 @@ target 'No-More-Clowns' do
 
   # Pods for No-More-Clowns
    pod 'Firebase/Core'
+   pod 'Firebase/Database'
 end
