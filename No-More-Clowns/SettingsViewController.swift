@@ -16,14 +16,20 @@ class SettingsViewController: UIViewController {
     // Sign out user
     @IBAction func signOutPressed(_ sender: AnyObject) {
         
+        // remove keyChain
         let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         print("KeyChain ID removed: \(keyChainResult)")
+        
+        // sign out on Firebase
         try! FIRAuth.auth()?.signOut()
         print("User signed out")
+        
+        // segue to sign in screen
         self.performSegue(withIdentifier: "goToSignIn", sender: self)
         
     }
     
+    // hide status bar
     override var prefersStatusBarHidden: Bool {
         return true
     }

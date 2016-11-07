@@ -11,7 +11,7 @@ import MapKit
 class ClownAnnotation: NSObject, MKAnnotation {
     
     
-    
+    // custom annotation
     var coordinate = CLLocationCoordinate2D()
     var message: String
     var title:  String?

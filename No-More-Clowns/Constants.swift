@@ -9,4 +9,5 @@
 import Foundation
 import UIKit
 
+// Firebase user id
 let KEY_UID = "uid"
