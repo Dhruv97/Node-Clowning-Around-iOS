@@ -125,6 +125,7 @@
                             <constraint firstItem="YPL-94-lKV" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" constant="-5" id="zf9-5R-K37"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="8MO-k3-dlE"/>
                     <navigationItem key="navigationItem" id="JMQ-l6-Agy"/>
                     <connections>
                         <outlet property="emailField" destination="vD4-ce-zU9" id="8SW-Ct-6xZ"/>
@@ -132,11 +133,20 @@
                         <outlet property="fbBtn" destination="epa-QB-IAc" id="BFv-jz-8TM"/>
                         <outlet property="passwordField" destination="2Qf-6m-i4l" id="YPR-hX-BRg"/>
                         <outlet property="passwordWarning" destination="YPL-94-lKV" id="dTe-qm-8iK"/>
+                        <segue destination="24D-pF-oV9" kind="show" identifier="Map" id="0yz-qs-P4M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jn-8N-ihs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="873.91304347826099"/>
+            <point key="canvasLocation" x="1967.2" y="873.91304347826099"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="3G6-Fv-los">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" id="24D-pF-oV9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="19w-iB-p5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2615" y="873"/>
         </scene>
     </scenes>
     <resources>

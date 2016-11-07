@@ -69,6 +69,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             } else {
                 
                 print("Firebase Auth with Facebook Success")
+                self.performSegue(withIdentifier: "Map", sender: self)
+
                 
             }
             
@@ -142,6 +144,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     if error == nil {
                         
                         print("Firebase Auth with Email Success")
+                        self.performSegue(withIdentifier: "Map", sender: self)
                     } else {
                         
                         // If user does not exist, sign up user
@@ -155,6 +158,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                             } else {
                                 
                                 print("Firebase Auth with Email Success")
+                                
+                                self.performSegue(withIdentifier: "Map", sender: self)
                                 
                             }
                             
