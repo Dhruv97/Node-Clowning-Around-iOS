@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,12 +16,46 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="yJc-dY-KS8">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="218" id="X95-f5-q4c"/>
+                                    <constraint firstAttribute="height" constant="208" id="qCK-F9-rrT"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© Node Clowning Around 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmA-f4-NEe">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="Osn-1L-q4L"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text" translatesAutoresizingMaskIntoConstraints="NO" id="8Y8-cf-rRI">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="KcE-65-v3E"/>
+                                    <constraint firstAttribute="height" constant="91" id="mQG-WQ-xBL"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.87450980392156863" green="0.20392156862745098" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="yJc-dY-KS8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="h6V-CQ-MAJ"/>
+                            <constraint firstItem="XmA-f4-NEe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="jP4-Qs-5hb"/>
+                            <constraint firstItem="yJc-dY-KS8" firstAttribute="top" secondItem="8Y8-cf-rRI" secondAttribute="bottom" constant="45" id="sJe-EZ-v2j"/>
+                            <constraint firstItem="8Y8-cf-rRI" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="60" id="uYb-b6-f6t"/>
+                            <constraint firstItem="XmA-f4-NEe" firstAttribute="top" secondItem="yJc-dY-KS8" secondAttribute="bottom" constant="66" id="yMo-Bq-zh8"/>
+                            <constraint firstItem="8Y8-cf-rRI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zrT-jn-ZVr"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="320" height="320"/>
+        <image name="text" width="372" height="107"/>
+    </resources>
 </document>
