@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E916F0D968C70EEB2D471C48 /* Pods_No_More_Clowns.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93384B5B4B5BE2111CAABBD0 /* Pods_No_More_Clowns.framework */; };
 		FC0D44D51DC992E7003E1BFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC0D44D41DC992E7003E1BFA /* GoogleService-Info.plist */; };
+		FC3572CC1DD033110011666E /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3572CB1DD033110011666E /* FancyView.swift */; };
 		FC45DDEB1DCEF5FE00E4499B /* ClownAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */; };
 		FC6D8F9B1DCFA9FE0002722F /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6D8F9A1DCFA9FE0002722F /* SignIn.storyboard */; };
 		FC6D8F9D1DCFB12D0002722F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6D8F9C1DCFB12D0002722F /* SignInViewController.swift */; };
@@ -26,6 +27,7 @@
 		8F5AE56BC96EB427E3766B2B /* Pods-No-More-Clowns.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-No-More-Clowns.release.xcconfig"; path = "Pods/Target Support Files/Pods-No-More-Clowns/Pods-No-More-Clowns.release.xcconfig"; sourceTree = "<group>"; };
 		93384B5B4B5BE2111CAABBD0 /* Pods_No_More_Clowns.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_No_More_Clowns.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC0D44D41DC992E7003E1BFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FC3572CB1DD033110011666E /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FancyView.swift; path = "../../../../Downloads/Udemy - iOS 10 and Swift 3 - From Beginner to Paid Professional/4. Firebase iOS 10/11-creating-a-social-network-with-firebase/attached_files/149-ios-10-app-social-network-firebase-database-relationships/devslopes-social-final-source-code/devslopes-social/FancyView.swift"; sourceTree = "<group>"; };
 		FC45C1C21DCAC7890057ED56 /* No-More-Clowns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No-More-Clowns.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClownAnnotation.swift; sourceTree = "<group>"; };
 		FC6D8F9A1DCFA9FE0002722F /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		FCE6C9451DC84A7E0064CF46 /* No-More-Clowns */ = {
 			isa = PBXGroup;
 			children = (
+				FC3572CB1DD033110011666E /* FancyView.swift */,
 				FC762B8D1DCFF53000A6C71F /* No-More-Clowns.entitlements */,
 				FCE6C9461DC84A7E0064CF46 /* AppDelegate.swift */,
 				FC45DDE81DCEF5CA00E4499B /* Model */,
@@ -258,6 +261,7 @@
 			files = (
 				FC6D8F9D1DCFB12D0002722F /* SignInViewController.swift in Sources */,
 				FCE6C9491DC84A7E0064CF46 /* MapViewController.swift in Sources */,
+				FC3572CC1DD033110011666E /* FancyView.swift in Sources */,
 				FC762B921DD015A000A6C71F /* FeedViewController.swift in Sources */,
 				FCE6C9471DC84A7E0064CF46 /* AppDelegate.swift in Sources */,
 				FC45DDEB1DCEF5FE00E4499B /* ClownAnnotation.swift in Sources */,
