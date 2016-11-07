@@ -30,20 +30,26 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @IBOutlet weak var centerBtn: UIButton!
     
+    // report sighting on button pressed
     @IBAction func reportSighting(_ sender: AnyObject) {
         
+        // calls create sighting and adds reported sighting to database
         createSightings()
         
     }
     
-    
+    // function to create a new Sightings object in Firebase database
     func createSightings() {
         
+        // get location that user is currently on
         let location = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         let lat = location.coordinate.latitude
         let long = location.coordinate.longitude
+        
+        // define sighting object
         let sighting: [String: Double] = ["lat" : lat, "long": long]
         
+        // add sighting to database
         fireBaseRef.child("Sightings").childByAutoId().setValue(sighting)
         
     }
@@ -68,16 +74,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // set fireBaseRef to the Firebase database reference
         fireBaseRef = FIRDatabase.database().reference()
         
-        
+        // gets all Sightings from Firebase database
         fireBaseRef.child("Sightings").queryOrderedByKey().observe(.childAdded, with: {
         
             (snapshot) in
             
+            // dictionary of all values of a sighting object (lat and long)
             let value = snapshot.value as? NSDictionary
+            
+            
             let lat = value!["lat"] as! CLLocationDegrees
             let long = value!["long"] as! CLLocationDegrees
+            
+            // form location for each sighting with their lat and long values
             let loc = CLLocation(latitude: lat, longitude: long)
             let anno = ClownAnnotation(coordinate: loc.coordinate)
+            
+            // add annotation to map using coordinates of the reported sighting
             self.mapView.addAnnotation(anno)
             
         
@@ -90,7 +103,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     override func viewDidAppear(_ animated: Bool) {
         
-          // call function to get authorization for user location when the view appears
+        // call function to get authorization for user location when the view appears
         locationAuthStatus()
     }
     
@@ -229,24 +242,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
     
-    
-    /*
-    @IBAction func tracking(_ sender: AnyObject) {
-        
-        if tracking == false {
-            print("tracking")
-            centerBtn.isEnabled = true
-
-            tracking = true
-            locationAuthStatus()
-        } else {
-            print("not tracking")
-            tracking = false
-            centerBtn.isEnabled = false
-            locationManager.stopUpdatingLocation()
-            mapView.userTrackingMode = MKUserTrackingMode.none
-        }
-    }*/    
     
 }
 
