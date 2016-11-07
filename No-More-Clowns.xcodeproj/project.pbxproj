@@ -14,6 +14,7 @@
 		FC3572D01DD0432E0011666E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3572CF1DD0432E0011666E /* SettingsViewController.swift */; };
 		FC3572D31DD046DD0011666E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3572D21DD046DD0011666E /* Constants.swift */; };
 		FC3572D51DD050A80011666E /* SightingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3572D41DD050A80011666E /* SightingCell.swift */; };
+		FC3CA8D41DD06F06007F4C9D /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3CA8D31DD06F06007F4C9D /* DataService.swift */; };
 		FC45DDEB1DCEF5FE00E4499B /* ClownAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */; };
 		FC6D8F9B1DCFA9FE0002722F /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6D8F9A1DCFA9FE0002722F /* SignIn.storyboard */; };
 		FC6D8F9D1DCFB12D0002722F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6D8F9C1DCFB12D0002722F /* SignInViewController.swift */; };
@@ -36,6 +37,7 @@
 		FC3572CF1DD0432E0011666E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FC3572D21DD046DD0011666E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FC3572D41DD050A80011666E /* SightingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightingCell.swift; sourceTree = "<group>"; };
+		FC3CA8D31DD06F06007F4C9D /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		FC45C1C21DCAC7890057ED56 /* No-More-Clowns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No-More-Clowns.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClownAnnotation.swift; sourceTree = "<group>"; };
 		FC6D8F9A1DCFA9FE0002722F /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 			name = Util;
 			sourceTree = "<group>";
 		};
+		FC3CA8D21DD06EEA007F4C9D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FC3CA8D31DD06F06007F4C9D /* DataService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		FC45DDE81DCEF5CA00E4499B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +144,7 @@
 		FCE6C9451DC84A7E0064CF46 /* No-More-Clowns */ = {
 			isa = PBXGroup;
 			children = (
+				FC3CA8D21DD06EEA007F4C9D /* Services */,
 				FC3572D11DD046D00011666E /* Util */,
 				FC762B8D1DCFF53000A6C71F /* No-More-Clowns.entitlements */,
 				FCE6C9461DC84A7E0064CF46 /* AppDelegate.swift */,
@@ -289,6 +300,7 @@
 				FCE6C9471DC84A7E0064CF46 /* AppDelegate.swift in Sources */,
 				FC45DDEB1DCEF5FE00E4499B /* ClownAnnotation.swift in Sources */,
 				FC3572D31DD046DD0011666E /* Constants.swift in Sources */,
+				FC3CA8D41DD06F06007F4C9D /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

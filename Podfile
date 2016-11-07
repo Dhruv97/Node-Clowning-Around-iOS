@@ -11,6 +11,7 @@ target 'No-More-Clowns' do
    pod 'Firebase/Auth'
    pod 'Firebase/Storage'
    pod 'FBSDKLoginKit'
+   pod 'FBSDKCoreKit'
    pod 'IQKeyboardManagerSwift'
    pod 'SwiftKeychainWrapper'
 end
