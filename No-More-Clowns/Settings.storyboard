@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xo0-c3-r2a">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings-->
+        <scene sceneID="8E1-XY-5tn">
+            <objects>
+                <viewController id="xo0-c3-r2a" customClass="SettingsViewController" customModule="No_More_Clowns" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yo5-VJ-PAI"/>
+                        <viewControllerLayoutGuide type="bottom" id="J9M-9w-xG3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SQJ-13-6IN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NB1-z5-gFd">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="9rQ-n1-fNd"/>
+                                    <constraint firstAttribute="height" constant="67" id="aLo-cR-3zq"/>
+                                </constraints>
+                                <state key="normal" image="signout"/>
+                                <connections>
+                                    <action selector="signOutPressed:" destination="xo0-c3-r2a" eventType="touchUpInside" id="Fqb-L0-AfJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.86274509799999999" green="0.20784313730000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="J9M-9w-xG3" firstAttribute="top" secondItem="NB1-z5-gFd" secondAttribute="bottom" constant="143" id="DRw-Np-lBF"/>
+                            <constraint firstItem="NB1-z5-gFd" firstAttribute="centerX" secondItem="SQJ-13-6IN" secondAttribute="centerX" id="gOM-Wt-kHo"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="M5m-QE-GYd"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="P1S-sf-pXz" kind="show" identifier="goToSignIn" id="JU9-lK-gXN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OAZ-vC-LbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128.80000000000001" y="165.96701649175412"/>
+        </scene>
+        <!--SignIn-->
+        <scene sceneID="0A3-1o-nPv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignIn" id="P1S-sf-pXz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3wX-0d-nSB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="636" y="165"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="settings" width="30" height="30"/>
+        <image name="signout" width="375" height="120"/>
+    </resources>
+</document>

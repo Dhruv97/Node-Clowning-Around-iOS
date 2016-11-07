@@ -56,7 +56,7 @@
                             <constraint firstAttribute="trailing" secondItem="DaW-ky-mH8" secondAttribute="trailing" constant="-9" id="6P7-40-XtV"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="THI-fC-Hn9" secondAttribute="bottom" constant="170" id="AiI-u9-CMi"/>
                             <constraint firstItem="k6j-4t-oEY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FPL-Kq-HJ4"/>
-                            <constraint firstItem="JfI-TB-EAS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="MU6-gv-paD"/>
+                            <constraint firstItem="JfI-TB-EAS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="MU6-gv-paD"/>
                             <constraint firstItem="k6j-4t-oEY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Mdk-P9-Gg3"/>
                             <constraint firstItem="JfI-TB-EAS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mtf-Gf-41c"/>
                             <constraint firstItem="DaW-ky-mH8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rla-JV-LY1"/>
@@ -89,6 +89,16 @@
             </objects>
             <point key="canvasLocation" x="2933" y="539"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="pQF-oZ-fDP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="JRg-uQ-8F1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="oDo-SI-J4g"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XSE-kN-Vme" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3209" y="509"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="NgI-Sg-Lld">
             <objects>
@@ -102,6 +112,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="1hA-GW-Rma"/>
                         <segue destination="81e-L6-aER" kind="relationship" relationship="viewControllers" id="iFM-Lk-gBF"/>
+                        <segue destination="JRg-uQ-8F1" kind="relationship" relationship="viewControllers" id="p5S-QJ-uQx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ml6-fe-k3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -114,6 +125,7 @@
         <image name="center" width="340" height="341"/>
         <image name="list" width="25" height="23"/>
         <image name="report" width="370" height="120"/>
+        <image name="settings" width="30" height="30"/>
         <image name="text" width="372" height="107"/>
         <image name="treasure-map" width="30" height="25"/>
     </resources>

@@ -10,6 +10,10 @@
 		E916F0D968C70EEB2D471C48 /* Pods_No_More_Clowns.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93384B5B4B5BE2111CAABBD0 /* Pods_No_More_Clowns.framework */; };
 		FC0D44D51DC992E7003E1BFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC0D44D41DC992E7003E1BFA /* GoogleService-Info.plist */; };
 		FC3572CC1DD033110011666E /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3572CB1DD033110011666E /* FancyView.swift */; };
+		FC3572CE1DD042620011666E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC3572CD1DD042620011666E /* Settings.storyboard */; };
+		FC3572D01DD0432E0011666E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3572CF1DD0432E0011666E /* SettingsViewController.swift */; };
+		FC3572D31DD046DD0011666E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3572D21DD046DD0011666E /* Constants.swift */; };
+		FC3572D51DD050A80011666E /* SightingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3572D41DD050A80011666E /* SightingCell.swift */; };
 		FC45DDEB1DCEF5FE00E4499B /* ClownAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */; };
 		FC6D8F9B1DCFA9FE0002722F /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6D8F9A1DCFA9FE0002722F /* SignIn.storyboard */; };
 		FC6D8F9D1DCFB12D0002722F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6D8F9C1DCFB12D0002722F /* SignInViewController.swift */; };
@@ -28,6 +32,10 @@
 		93384B5B4B5BE2111CAABBD0 /* Pods_No_More_Clowns.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_No_More_Clowns.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC0D44D41DC992E7003E1BFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC3572CB1DD033110011666E /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FancyView.swift; path = "../../../../Downloads/Udemy - iOS 10 and Swift 3 - From Beginner to Paid Professional/4. Firebase iOS 10/11-creating-a-social-network-with-firebase/attached_files/149-ios-10-app-social-network-firebase-database-relationships/devslopes-social-final-source-code/devslopes-social/FancyView.swift"; sourceTree = "<group>"; };
+		FC3572CD1DD042620011666E /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		FC3572CF1DD0432E0011666E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FC3572D21DD046DD0011666E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FC3572D41DD050A80011666E /* SightingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightingCell.swift; sourceTree = "<group>"; };
 		FC45C1C21DCAC7890057ED56 /* No-More-Clowns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No-More-Clowns.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClownAnnotation.swift; sourceTree = "<group>"; };
 		FC6D8F9A1DCFA9FE0002722F /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -72,6 +80,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FC3572D11DD046D00011666E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				FC3572D21DD046DD0011666E /* Constants.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		FC45DDE81DCEF5CA00E4499B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +102,7 @@
 				FC6D8F9C1DCFB12D0002722F /* SignInViewController.swift */,
 				FCE6C9481DC84A7E0064CF46 /* MapViewController.swift */,
 				FC762B911DD015A000A6C71F /* FeedViewController.swift */,
+				FC3572CF1DD0432E0011666E /* SettingsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -93,10 +110,13 @@
 		FC762B8E1DD0153E00A6C71F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FC3572CB1DD033110011666E /* FancyView.swift */,
+				FC3572D41DD050A80011666E /* SightingCell.swift */,
 				FCE6C94F1DC84A7E0064CF46 /* LaunchScreen.storyboard */,
 				FC6D8F9A1DCFA9FE0002722F /* SignIn.storyboard */,
 				FCE6C94A1DC84A7E0064CF46 /* Map.storyboard */,
 				FC762B8F1DD0158C00A6C71F /* Feed.storyboard */,
+				FC3572CD1DD042620011666E /* Settings.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -114,7 +134,7 @@
 		FCE6C9451DC84A7E0064CF46 /* No-More-Clowns */ = {
 			isa = PBXGroup;
 			children = (
-				FC3572CB1DD033110011666E /* FancyView.swift */,
+				FC3572D11DD046D00011666E /* Util */,
 				FC762B8D1DCFF53000A6C71F /* No-More-Clowns.entitlements */,
 				FCE6C9461DC84A7E0064CF46 /* AppDelegate.swift */,
 				FC45DDE81DCEF5CA00E4499B /* Model */,
@@ -201,6 +221,7 @@
 				FCE6C94C1DC84A7E0064CF46 /* Map.storyboard in Resources */,
 				FC0D44D51DC992E7003E1BFA /* GoogleService-Info.plist in Resources */,
 				FC6D8F9B1DCFA9FE0002722F /* SignIn.storyboard in Resources */,
+				FC3572CE1DD042620011666E /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,12 +280,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC3572D51DD050A80011666E /* SightingCell.swift in Sources */,
 				FC6D8F9D1DCFB12D0002722F /* SignInViewController.swift in Sources */,
 				FCE6C9491DC84A7E0064CF46 /* MapViewController.swift in Sources */,
+				FC3572D01DD0432E0011666E /* SettingsViewController.swift in Sources */,
 				FC3572CC1DD033110011666E /* FancyView.swift in Sources */,
 				FC762B921DD015A000A6C71F /* FeedViewController.swift in Sources */,
 				FCE6C9471DC84A7E0064CF46 /* AppDelegate.swift in Sources */,
 				FC45DDEB1DCEF5FE00E4499B /* ClownAnnotation.swift in Sources */,
+				FC3572D31DD046DD0011666E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

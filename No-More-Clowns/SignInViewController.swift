@@ -11,6 +11,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
 import FirebaseAuth
+import SwiftKeychainWrapper
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
 
@@ -69,8 +70,12 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             } else {
                 
                 print("Firebase Auth with Facebook Success")
-                self.performSegue(withIdentifier: "Map", sender: self)
-
+                
+                if let user = user {
+                    
+                    self.completeSignIn(id: user.uid)
+                }
+                
                 
             }
             
@@ -144,7 +149,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     if error == nil {
                         
                         print("Firebase Auth with Email Success")
-                        self.performSegue(withIdentifier: "Map", sender: self)
+                        
+                        if let user = user {
+                            
+                            self.completeSignIn(id: user.uid)
+                        }
+                        
+                        
                     } else {
                         
                         // If user does not exist, sign up user
@@ -159,7 +170,12 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                                 
                                 print("Firebase Auth with Email Success")
                                 
-                                self.performSegue(withIdentifier: "Map", sender: self)
+                                if let user = user {
+                       
+                                    
+                                    self.completeSignIn(id: user.uid)
+                                }
+                                
                                 
                             }
                             
@@ -176,6 +192,17 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func completeSignIn(id: String) {
+        
+        let keyChainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        
+        print("Data saved to keychain: \(keyChainResult)")
+        
+        performSegue(withIdentifier: "Map", sender: nil)
+
+
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -189,9 +216,25 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
         // add gesture recognizer to call dismissKeyboard function
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
+        
+        
+       
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            
+            performSegue(withIdentifier: "Map", sender: nil)
+            
+        }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+   /* override func viewWillAppear(_ animated: Bool) {
         
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if let user = user {
@@ -204,7 +247,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-    }
+    }*/
 
     // dismiss keyboard on touch outside of keyboard
     func dismissKeyboard() {
