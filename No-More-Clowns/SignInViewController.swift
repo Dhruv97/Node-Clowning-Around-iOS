@@ -190,6 +190,21 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         // add gesture recognizer to call dismissKeyboard function
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+            if let user = user {
+                // User is signed in.
+                print("\(user.email) is signed in")
+                 self.performSegue(withIdentifier: "Map", sender: self)
+            } else {
+                // No user is signed in.
+                print("Sign In")
+            }
+        }
+        
+    }
 
     // dismiss keyboard on touch outside of keyboard
     func dismissKeyboard() {

@@ -166,45 +166,33 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // function for setting custom annotation
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-       let annoId = "Clown"
-        
-        // declare var for custom annotation
+        let annoIdentifier = "Clown"
         var annotationView: MKAnnotationView?
+        
         if annotation.isKind(of: MKUserLocation.self) {
-            
-            // set custom annotation
-             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
             annotationView?.image = UIImage(named: "person")
-           
-                       
-        } else if let dequeuedAnno = mapView.dequeueReusableAnnotationView(withIdentifier: annoId) {
-            
-            annotationView = dequeuedAnno
+        } else if let deqAnno = mapView.dequeueReusableAnnotationView(withIdentifier: annoIdentifier) {
+            annotationView = deqAnno
             annotationView?.annotation = annotation
-            
         } else {
-            
-            let av = MKAnnotationView(annotation: annotation, reuseIdentifier: annoId)
+            let av = MKAnnotationView(annotation: annotation, reuseIdentifier: annoIdentifier)
             av.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             annotationView = av
-            
-            
-            if let annotationView = annotationView {
-                
-                annotationView.canShowCallout = true
-                annotationView.image = UIImage(named: "icon.png")
-                /*
-                 let btn = UIButton()
-                 btn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-                 btn.setImage(UIImage(named: "map"), for: .normal)
-                 annotationView.rightCalloutAccessoryView = btn
-                 */
-                
-            }
         }
         
-      
- 
+        if let annotationView = annotationView, let anno = annotation as? ClownAnnotation {
+            
+            annotationView.canShowCallout = true
+            annotationView.image = UIImage(named: "icon.png")
+            /*
+            let btn = UIButton()
+            btn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            btn.setImage(UIImage(named: "map"), for: .normal)
+            annotationView.rightCalloutAccessoryView = btn*/
+            
+        }
+        
         return annotationView
     }
     

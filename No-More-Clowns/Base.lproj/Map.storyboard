@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zFD-gn-vlZ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--Map-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="No_More_Clowns" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="k6j-4t-oEY">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="k6j-4t-oEY">
                                 <frame key="frameInset" width="1000" height="1000"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXf-Fu-vCb">
@@ -71,7 +71,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kXf-Fu-vCb" secondAttribute="bottom" constant="55" id="wVu-Xz-Z71"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="zL6-Jx-PZv"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="treasure-map" id="zL6-Jx-PZv"/>
                     <navigationItem key="navigationItem" id="G1d-97-YMb"/>
                     <connections>
                         <outlet property="centerBtn" destination="THI-fC-Hn9" id="AKU-ie-fvZ"/>
@@ -80,13 +80,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1994.4000000000001" y="122.78860569715144"/>
+            <point key="canvasLocation" x="3638" y="123"/>
+        </scene>
+        <!--Feed-->
+        <scene sceneID="XBk-TC-sVg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Feed" id="81e-L6-aER" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Feed" image="list" id="a1c-6d-3A1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L2G-7N-u2O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2933" y="539"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="NgI-Sg-Lld">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zFD-gn-vlZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="IxH-0X-zfK">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="1hA-GW-Rma"/>
+                        <segue destination="81e-L6-aER" kind="relationship" relationship="viewControllers" id="iFM-Lk-gBF"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ml6-fe-k3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2933.5999999999999" y="122.78860569715144"/>
         </scene>
     </scenes>
     <resources>
         <image name="bar" width="676" height="214"/>
         <image name="center" width="340" height="341"/>
+        <image name="list" width="25" height="23"/>
         <image name="report" width="370" height="120"/>
         <image name="text" width="372" height="107"/>
+        <image name="treasure-map" width="30" height="25"/>
     </resources>
 </document>
