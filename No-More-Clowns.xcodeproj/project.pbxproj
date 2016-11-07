@@ -28,6 +28,7 @@
 		FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClownAnnotation.swift; sourceTree = "<group>"; };
 		FC6D8F9A1DCFA9FE0002722F /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		FC6D8F9C1DCFB12D0002722F /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		FC762B8D1DCFF53000A6C71F /* No-More-Clowns.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "No-More-Clowns.entitlements"; sourceTree = "<group>"; };
 		FCE6C9461DC84A7E0064CF46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCE6C9481DC84A7E0064CF46 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FCE6C94B1DC84A7E0064CF46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 		FCE6C9451DC84A7E0064CF46 /* No-More-Clowns */ = {
 			isa = PBXGroup;
 			children = (
+				FC762B8D1DCFF53000A6C71F /* No-More-Clowns.entitlements */,
 				FC45DDE81DCEF5CA00E4499B /* Model */,
 				FC45DDE91DCEF5D000E4499B /* Controller */,
 				FCE6C9461DC84A7E0064CF46 /* AppDelegate.swift */,
@@ -145,6 +147,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 3GKN44XQ72;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -281,6 +288,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -331,6 +339,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -360,7 +369,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5BF8E9612E3F258F6DC2EEF6 /* Pods-No-More-Clowns.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "No-More-Clowns/No-More-Clowns.entitlements";
 				DEVELOPMENT_TEAM = 3GKN44XQ72;
 				INFOPLIST_FILE = "No-More-Clowns/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -376,7 +387,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F5AE56BC96EB427E3766B2B /* Pods-No-More-Clowns.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "No-More-Clowns/No-More-Clowns.entitlements";
 				DEVELOPMENT_TEAM = 3GKN44XQ72;
 				INFOPLIST_FILE = "No-More-Clowns/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

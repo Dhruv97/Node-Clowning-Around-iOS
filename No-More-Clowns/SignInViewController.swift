@@ -22,6 +22,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField!
     
     
+    @IBOutlet weak var emailWarning: UILabel!
+    
+    @IBOutlet weak var passwordWarning: UILabel!
     
     // Log in user using Facebook account
     @IBAction func fbBtnPressed(_ sender: AnyObject) {
@@ -61,11 +64,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             
             if error != nil {
                 
-                print("Firebase Auth Error: Unable to authenticate with Firebase: \(error)")
+                print("Firebase Auth with Facebook Error: Unable to authenticate with Firebase: \(error)")
                 
             } else {
                 
-                print("Firebase Auth Success")
+                print("Firebase Auth with Facebook Success")
                 
             }
             
@@ -77,6 +80,93 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func signInBtnPressed(_ sender: AnyObject) {
         
+       // Check that user has entered email and password (of 6+ chars)
+        
+        if((emailField.text?.characters.count)! < 1) {
+            print("Please enter email")
+            emailWarning.isHidden = false
+      
+        }
+        
+        if((passwordField.text?.characters.count)! < 1) {
+            print("Please enter password")
+            
+            passwordWarning.isHidden = false
+            passwordWarning.text = "Please enter your password!"
+
+        
+            
+        }
+        
+        if((passwordField.text?.characters.count)! < 6 && (passwordField.text?.characters.count)! >= 1) {
+            
+            print("Password must be 6+ chars")
+            passwordWarning.isHidden = false
+            passwordWarning.text = "Must be 6+ chars!"
+            
+            
+            if((emailField.text?.characters.count)! < 1) {
+                print("Please enter email")
+                emailWarning.isHidden = false
+            } else {
+                emailWarning.isHidden = true
+                
+            }
+  
+        }
+        
+        if((passwordField.text?.characters.count)! >= 6) {
+             passwordWarning.isHidden = true
+            
+        }
+        
+        if((emailField.text?.characters.count)! >= 1) {
+            emailWarning.isHidden = true
+
+            
+        }
+        
+        if((passwordField.text?.characters.count)! >= 6 && (emailField.text?.characters.count)! >= 1 ) {
+            
+            passwordWarning.isHidden = true
+            emailWarning.isHidden = true
+            
+            // Sign user in using email and password
+            
+            if let email = emailField.text, let password = passwordField.text {
+                
+                // If user exists, sign user in
+                
+                FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+                    
+                    if error == nil {
+                        
+                        print("Firebase Auth with Email Success")
+                    } else {
+                        
+                        // If user does not exist, sign up user
+                        
+                        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
+                            
+                            if error != nil {
+                                
+                                print("Firebase Auth with Email Error: \(error)")
+                                
+                            } else {
+                                
+                                print("Firebase Auth with Email Success")
+                                
+                            }
+                            
+                        })
+                        
+                    }
+                    
+                    
+                })
+                
+            }
+        }
         
         
     }
@@ -85,16 +175,18 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // set image for when button is pressed
         fbBtn.setImage(UIImage(named:"fb2.png"), for: .highlighted)
         
-        self.navigationController?.isNavigationBarHidden = true
-        
+       // set textField delegates
         emailField.delegate = self
         passwordField.delegate = self
         
+        // add gesture recognizer to call dismissKeyboard function
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
     }
 
+    // dismiss keyboard on touch outside of keyboard
     func dismissKeyboard() {
         
         emailField.resignFirstResponder()
@@ -102,6 +194,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // dismiss keyboard on done/return pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()

@@ -84,45 +84,59 @@
                                     <action selector="fbBtnPressed:" destination="M6m-8h-vCx" eventType="touchUpInside" id="vu8-wP-Pup"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your password!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPL-94-lKV">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="183" id="Xx1-nW-vA7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your email!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEp-O4-PvR">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="194" id="9Lf-KB-y2G"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.87450980389999999" green="0.20392156859999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="vD4-ce-zU9" firstAttribute="top" secondItem="IIl-xN-4Nh" secondAttribute="bottom" constant="10" id="0KN-iZ-cok"/>
                             <constraint firstItem="yLP-W7-DFB" firstAttribute="top" secondItem="4jf-hu-fXI" secondAttribute="bottom" id="0eT-bM-zc7"/>
-                            <constraint firstItem="6Q7-F3-6e2" firstAttribute="top" secondItem="2Qf-6m-i4l" secondAttribute="bottom" constant="17" id="0eg-L7-c7T"/>
+                            <constraint firstItem="6Q7-F3-6e2" firstAttribute="top" secondItem="2Qf-6m-i4l" secondAttribute="bottom" constant="40" id="0eg-L7-c7T"/>
                             <constraint firstItem="epa-QB-IAc" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" id="4CO-G7-uTW"/>
                             <constraint firstItem="653-xf-Hya" firstAttribute="top" secondItem="6Q7-F3-6e2" secondAttribute="bottom" constant="8" id="7Ja-8L-lD8"/>
                             <constraint firstItem="yLP-W7-DFB" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" id="80E-ap-a8j"/>
+                            <constraint firstItem="XEp-O4-PvR" firstAttribute="top" secondItem="vD4-ce-zU9" secondAttribute="bottom" constant="1" id="GJD-BC-sAg"/>
                             <constraint firstItem="IIl-xN-4Nh" firstAttribute="top" secondItem="yLP-W7-DFB" secondAttribute="bottom" constant="8" id="PlW-B1-Y4q"/>
                             <constraint firstItem="vD4-ce-zU9" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" id="PpP-92-d54"/>
+                            <constraint firstItem="XEp-O4-PvR" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" id="Qmo-XJ-pj1"/>
                             <constraint firstItem="653-xf-Hya" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" id="SvJ-Ef-bCQ"/>
                             <constraint firstItem="0mE-XP-Fsz" firstAttribute="top" secondItem="iRf-Jx-PCN" secondAttribute="bottom" constant="8" id="Xld-zj-u2V"/>
                             <constraint firstItem="iRf-Jx-PCN" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" id="jLR-cw-5ee"/>
-                            <constraint firstItem="2Qf-6m-i4l" firstAttribute="top" secondItem="vD4-ce-zU9" secondAttribute="bottom" constant="15" id="m9N-Td-UoU"/>
+                            <constraint firstItem="2Qf-6m-i4l" firstAttribute="top" secondItem="vD4-ce-zU9" secondAttribute="bottom" constant="20" id="m9N-Td-UoU"/>
                             <constraint firstItem="6Q7-F3-6e2" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" id="qEo-ot-qlY"/>
                             <constraint firstItem="epa-QB-IAc" firstAttribute="top" secondItem="653-xf-Hya" secondAttribute="bottom" constant="19.5" id="r6a-1C-3u8"/>
                             <constraint firstItem="2Qf-6m-i4l" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" id="uL8-oo-c72"/>
                             <constraint firstItem="IIl-xN-4Nh" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" id="xiG-wE-yzm"/>
+                            <constraint firstItem="6Q7-F3-6e2" firstAttribute="top" secondItem="YPL-94-lKV" secondAttribute="bottom" constant="27" id="zJq-la-wIR"/>
+                            <constraint firstItem="YPL-94-lKV" firstAttribute="centerX" secondItem="nyq-u5-bVP" secondAttribute="centerX" constant="-5" id="zf9-5R-K37"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JMQ-l6-Agy"/>
                     <connections>
                         <outlet property="emailField" destination="vD4-ce-zU9" id="8SW-Ct-6xZ"/>
+                        <outlet property="emailWarning" destination="XEp-O4-PvR" id="rLZ-fk-9R5"/>
                         <outlet property="fbBtn" destination="epa-QB-IAc" id="BFv-jz-8TM"/>
                         <outlet property="passwordField" destination="2Qf-6m-i4l" id="YPR-hX-BRg"/>
+                        <outlet property="passwordWarning" destination="YPL-94-lKV" id="dTe-qm-8iK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jn-8N-ihs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1028" y="873.91304347826099"/>
-        </scene>
-        <!--Map-->
-        <scene sceneID="yID-Nq-pjI">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Map" id="CIC-Km-Q0E" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hsC-kH-72d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1737.5999999999999" y="791.60419790104959"/>
         </scene>
     </scenes>
     <resources>
