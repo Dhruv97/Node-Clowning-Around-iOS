@@ -20,6 +20,13 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         
+        // Firebase event listener for sightings
+        DataService.ds.REF_SIGHTINGS.observe(.value, with: { (snapshot) in
+            
+            print(snapshot.value)
+        
+        })
+        
     }
     
     // hide status bar
