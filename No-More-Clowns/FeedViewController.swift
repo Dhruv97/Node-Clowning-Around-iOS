@@ -13,6 +13,9 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
 
     @IBOutlet weak var tableView: UITableView!
     
+    // Sightings array
+    var sightings = [Sighting]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,9 +26,26 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
         // Firebase event listener for sightings
         DataService.ds.REF_SIGHTINGS.observe(.value, with: { (snapshot) in
             
-            print(snapshot.value)
-        
+            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                for snap in snapshot {
+                    
+                    print("SNAP: \(snap)")
+                    
+                    if let sightingDict = snap.value as? Dictionary<String, AnyObject> {
+                        
+                        let key = snap.key
+                        let sighting = Sighting(sightingKey: key, sightingData: sightingDict)
+                        self.sightings.append(sighting)
+                        
+                    }
+                    
+                }
+            }
+            
+            self.tableView.reloadData()
         })
+        
         
     }
     
@@ -43,11 +63,16 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
     // function that creates number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        
+        return sightings.count
     }
     
     // function for defining the cells in the rows
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let sighting = sightings[indexPath.row]
+        print("SIGHTING: \(sighting.lat)")
+
         
         return tableView.dequeueReusableCell(withIdentifier: "SightingCell") as! SightingCell
     }

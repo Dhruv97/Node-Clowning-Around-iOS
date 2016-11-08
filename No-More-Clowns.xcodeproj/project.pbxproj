@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		E916F0D968C70EEB2D471C48 /* Pods_No_More_Clowns.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93384B5B4B5BE2111CAABBD0 /* Pods_No_More_Clowns.framework */; };
-		FC0D44D51DC992E7003E1BFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC0D44D41DC992E7003E1BFA /* GoogleService-Info.plist */; };
 		FC3572CC1DD033110011666E /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3572CB1DD033110011666E /* FancyView.swift */; };
 		FC3572CE1DD042620011666E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC3572CD1DD042620011666E /* Settings.storyboard */; };
 		FC3572D01DD0432E0011666E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3572CF1DD0432E0011666E /* SettingsViewController.swift */; };
 		FC3572D31DD046DD0011666E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3572D21DD046DD0011666E /* Constants.swift */; };
 		FC3572D51DD050A80011666E /* SightingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3572D41DD050A80011666E /* SightingCell.swift */; };
 		FC3CA8D41DD06F06007F4C9D /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3CA8D31DD06F06007F4C9D /* DataService.swift */; };
+		FC3CA8D61DD1851E007F4C9D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC3CA8D51DD1851E007F4C9D /* GoogleService-Info.plist */; };
+		FC3CA8D81DD1A492007F4C9D /* Sighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3CA8D71DD1A492007F4C9D /* Sighting.swift */; };
 		FC45DDEB1DCEF5FE00E4499B /* ClownAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */; };
 		FC6D8F9B1DCFA9FE0002722F /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6D8F9A1DCFA9FE0002722F /* SignIn.storyboard */; };
 		FC6D8F9D1DCFB12D0002722F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6D8F9C1DCFB12D0002722F /* SignInViewController.swift */; };
@@ -31,13 +32,14 @@
 		5BF8E9612E3F258F6DC2EEF6 /* Pods-No-More-Clowns.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-No-More-Clowns.debug.xcconfig"; path = "Pods/Target Support Files/Pods-No-More-Clowns/Pods-No-More-Clowns.debug.xcconfig"; sourceTree = "<group>"; };
 		8F5AE56BC96EB427E3766B2B /* Pods-No-More-Clowns.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-No-More-Clowns.release.xcconfig"; path = "Pods/Target Support Files/Pods-No-More-Clowns/Pods-No-More-Clowns.release.xcconfig"; sourceTree = "<group>"; };
 		93384B5B4B5BE2111CAABBD0 /* Pods_No_More_Clowns.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_No_More_Clowns.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC0D44D41DC992E7003E1BFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC3572CB1DD033110011666E /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FancyView.swift; path = "../../../../Downloads/Udemy - iOS 10 and Swift 3 - From Beginner to Paid Professional/4. Firebase iOS 10/11-creating-a-social-network-with-firebase/attached_files/149-ios-10-app-social-network-firebase-database-relationships/devslopes-social-final-source-code/devslopes-social/FancyView.swift"; sourceTree = "<group>"; };
 		FC3572CD1DD042620011666E /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		FC3572CF1DD0432E0011666E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FC3572D21DD046DD0011666E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FC3572D41DD050A80011666E /* SightingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightingCell.swift; sourceTree = "<group>"; };
 		FC3CA8D31DD06F06007F4C9D /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		FC3CA8D51DD1851E007F4C9D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../.Trash/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FC3CA8D71DD1A492007F4C9D /* Sighting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sighting.swift; sourceTree = "<group>"; };
 		FC45C1C21DCAC7890057ED56 /* No-More-Clowns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No-More-Clowns.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClownAnnotation.swift; sourceTree = "<group>"; };
 		FC6D8F9A1DCFA9FE0002722F /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */,
+				FC3CA8D71DD1A492007F4C9D /* Sighting.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -152,7 +155,7 @@
 				FC762B8E1DD0153E00A6C71F /* View */,
 				FC45DDE91DCEF5D000E4499B /* Controller */,
 				FCE6C94D1DC84A7E0064CF46 /* Assets.xcassets */,
-				FC0D44D41DC992E7003E1BFA /* GoogleService-Info.plist */,
+				FC3CA8D51DD1851E007F4C9D /* GoogleService-Info.plist */,
 				FCE6C9521DC84A7E0064CF46 /* Info.plist */,
 			);
 			path = "No-More-Clowns";
@@ -227,10 +230,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCE6C9511DC84A7E0064CF46 /* LaunchScreen.storyboard in Resources */,
+				FC3CA8D61DD1851E007F4C9D /* GoogleService-Info.plist in Resources */,
 				FCE6C94E1DC84A7E0064CF46 /* Assets.xcassets in Resources */,
 				FC762B901DD0158C00A6C71F /* Feed.storyboard in Resources */,
 				FCE6C94C1DC84A7E0064CF46 /* Map.storyboard in Resources */,
-				FC0D44D51DC992E7003E1BFA /* GoogleService-Info.plist in Resources */,
 				FC6D8F9B1DCFA9FE0002722F /* SignIn.storyboard in Resources */,
 				FC3572CE1DD042620011666E /* Settings.storyboard in Resources */,
 			);
@@ -300,6 +303,7 @@
 				FCE6C9471DC84A7E0064CF46 /* AppDelegate.swift in Sources */,
 				FC45DDEB1DCEF5FE00E4499B /* ClownAnnotation.swift in Sources */,
 				FC3572D31DD046DD0011666E /* Constants.swift in Sources */,
+				FC3CA8D81DD1A492007F4C9D /* Sighting.swift in Sources */,
 				FC3CA8D41DD06F06007F4C9D /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

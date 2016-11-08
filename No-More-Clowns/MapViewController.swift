@@ -10,12 +10,14 @@
 import UIKit
 import MapKit
 import Firebase
-import FirebaseDatabase
+
 
 // include mapview delegate and location manager delegate
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    
+    @IBOutlet weak var dangerSign: UIImageView!
     
     // location managager init
     let locationManager = CLLocationManager()
@@ -26,8 +28,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var tracking = true
     
     // FireBase reference created
-    var fireBaseRef: FIRDatabaseReference!
-    
+    var fireBaseRef = DataService.ds.REF_SIGHTINGS
     @IBOutlet weak var centerBtn: UIButton!
     
     // report sighting on button pressed
@@ -47,10 +48,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let long = location.coordinate.longitude
         
         // define sighting object
-        let sighting: [String: Double] = ["lat" : lat, "long": long]
+        let sighting: [String: AnyObject] = ["lat" : lat as AnyObject, "long": long as AnyObject]
         
         // add sighting to database
-        fireBaseRef.child("Sightings").childByAutoId().setValue(sighting)
+        DataService.ds.REF_SIGHTINGS.childByAutoId().setValue(sighting)
         
     }
     
@@ -74,11 +75,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
              mapView.userTrackingMode = MKUserTrackingMode.none
         }
         
-        // set fireBaseRef to the Firebase database reference
-        fireBaseRef = FIRDatabase.database().reference()
+        
         
         // gets all Sightings from Firebase database
-        fireBaseRef.child("Sightings").queryOrderedByKey().observe(.childAdded, with: {
+        DataService.ds.REF_SIGHTINGS.queryOrderedByKey().observe(.childAdded, with: {
         
             (snapshot) in
             
@@ -91,16 +91,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             // form location for each sighting with their lat and long values
             let loc = CLLocation(latitude: lat, longitude: long)
+            
+           
+            
             let anno = ClownAnnotation(coordinate: loc.coordinate)
             
             // add annotation to map using coordinates of the reported sighting
             self.mapView.addAnnotation(anno)
             
-        
+            
+            
         })
         
         
-        
+      
     }
     
     
@@ -195,6 +199,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             annotationView.rightCalloutAccessoryView = btn*/
             
         }
+        
+        
         
         return annotationView
     }
