@@ -23,9 +23,21 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         
+        
+        // calls function to load reported Sightings
+        loadSightings()
+        
+    }
+    
+  
+    
+    func loadSightings() {
+        
+        
         // Firebase event listener for sightings
         DataService.ds.REF_SIGHTINGS.observe(.value, with: { (snapshot) in
-            
+            var tempSightingsArr = [Sighting]()
+            tempSightingsArr = []
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 
                 for snap in snapshot {
@@ -34,10 +46,11 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
                     
                     if let sightingDict = snap.value as? Dictionary<String, AnyObject> {
                         
+                        print("LAT! \(sightingDict["lat"])")
                         let key = snap.key
                         let sighting = Sighting(sightingKey: key, sightingData: sightingDict)
-                        self.sightings.append(sighting)
-                        
+                        tempSightingsArr.append(sighting)
+                        self.sightings = tempSightingsArr
                     }
                     
                 }
@@ -45,7 +58,6 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
             
             self.tableView.reloadData()
         })
-        
         
     }
     
@@ -70,11 +82,22 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
     // function for defining the cells in the rows
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        // get the sighting in sightings array at the index of the cell in the table view
         let sighting = sightings[indexPath.row]
-        print("SIGHTING: \(sighting.lat)")
-
         
-        return tableView.dequeueReusableCell(withIdentifier: "SightingCell") as! SightingCell
+        // declare cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "SightingCell") as? SightingCell {
+            
+            // configure cell using data from the sighting
+            cell.configureCell(sighting: sighting)
+            
+            return cell
+            
+        } else {
+            
+            return SightingCell()
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

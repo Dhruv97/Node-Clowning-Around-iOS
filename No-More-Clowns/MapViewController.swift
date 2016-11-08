@@ -48,17 +48,54 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let long = location.coordinate.longitude
         
         // define sighting object
-        let sighting: [String: AnyObject] = ["lat" : lat as AnyObject, "long": long as AnyObject]
-        
+         let sighting: [String: AnyObject] = ["lat" : lat as AnyObject, "long": long as AnyObject, "imageURL": "" as AnyObject, "likes": 0 as AnyObject]
         // add sighting to database
         DataService.ds.REF_SIGHTINGS.childByAutoId().setValue(sighting)
-        
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
+    
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        DataService.ds.REF_SIGHTINGS.observe(.value, with: { (snapshot) in
+            
+            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                for snap in snapshot {
+                    
+                    print("SNAP: \(snap)")
+                    
+                    if let sightingDict = snap.value as? Dictionary<String, AnyObject> {
+                        
+                        print("LAT! \(sightingDict["lat"])")
+                        
+                        let lat = sightingDict["lat"]
+                        let long = sightingDict["long"]
+                        
+                        let clownLocation = CLLocation(latitude: lat as! CLLocationDegrees, longitude: long as! CLLocationDegrees)
+                        
+                        let userLoc = CLLocation(latitude: self.mapView.userLocation.coordinate.latitude, longitude: self.mapView.userLocation.coordinate.longitude)
+                        
+                        if userLoc.distance(from: clownLocation) < 1609 {
+                            
+                            self.dangerSign.isHidden = false
+                            print("DANGER: A Clown was spotted nearby!")
+                        } else {
+                            
+                            self.dangerSign.isHidden = true
+                        }
+                        
+                    }
+                    
+                }
+            }
+            
+        })
+
+    }
+ 
     override func viewDidLoad() {
        
         super.viewDidLoad()
@@ -103,8 +140,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
         })
         
+        DataService.ds.REF_SIGHTINGS.observe(.childChanged, with: {(snapshot) in
         
-      
+            // dictionary of all values of a sighting object (lat and long)
+            let value = snapshot.value as? NSDictionary
+            
+            
+            let lat = value!["lat"] as! CLLocationDegrees
+            let long = value!["long"] as! CLLocationDegrees
+            
+            // form location for each sighting with their lat and long values
+            let loc = CLLocation(latitude: lat, longitude: long)
+            
+            
+            
+            let anno = ClownAnnotation(coordinate: loc.coordinate)
+            
+            // add annotation to map using coordinates of the reported sighting
+            self.mapView.removeAnnotation(anno)
+
+            
+        })
+        
     }
     
     
@@ -112,6 +169,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         // call function to get authorization for user location when the view appears
         locationAuthStatus()
+        
+        
     }
     
  
@@ -240,7 +299,5 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         
     }
-    
-    
 }
 

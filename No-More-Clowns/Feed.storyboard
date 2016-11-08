@@ -132,6 +132,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="likesLabel" destination="8Qx-Bx-sHq" id="3Av-3W-Ufq"/>
+                                            <outlet property="locationLabel" destination="0wj-1j-1kR" id="tEC-1e-a13"/>
+                                            <outlet property="sightingImg" destination="OZF-1g-a1N" id="PtW-ms-7LI"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
