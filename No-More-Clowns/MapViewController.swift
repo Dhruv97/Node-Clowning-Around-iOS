@@ -13,11 +13,13 @@ import Firebase
 
 
 // include mapview delegate and location manager delegate
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var dangerSign: UIImageView!
+    
+    var image: UIImage? = nil
     
     var sightings = [Sighting]()
     
@@ -34,12 +36,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @IBOutlet weak var centerBtn: UIButton!
     
+    var imagePicker: UIImagePickerController!
+    
     // report sighting on button pressed
     @IBAction func reportSighting(_ sender: AnyObject) {
         
-        // calls create sighting and adds reported sighting to database
-        createSightings()
+        present(imagePicker, animated: true) {
         
+            // calls create sighting and adds reported sighting to database
+            self.createSightings()
+        
+        }        
     }
     
     // function to create a new Sightings object in Firebase database
@@ -72,7 +79,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // turn on user tracking mode to follow user
         mapView.userTrackingMode = MKUserTrackingMode.follow
         
+        // init imagePicker
+        imagePicker = UIImagePickerController()
+    
+        // lets user edit image frame
+        imagePicker.allowsEditing = true
         
+        // set imagePicker delegate
+        imagePicker.delegate = self
         
         // gets all Sightings from Firebase database
         DataService.ds.REF_SIGHTINGS.observe(.value, with: { (snapshot) in
@@ -217,7 +231,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             annotationView = av
         }
         
-        if let annotationView = annotationView,  let anno = annotation as? ClownAnnotation {
+        if let annotationView = annotationView,  let _ = annotation as? ClownAnnotation {
             
             annotationView.canShowCallout = true
             annotationView.image = UIImage(named: "icon.png")
@@ -267,6 +281,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             centerMap(location: location)
             print(location)
         }
+        
+    }
+    
+    // function called once user has selected an image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let selectedImg = info[UIImagePickerControllerEditedImage] as? UIImage {
+            
+            image = selectedImg
+            
+        } else {
+            
+            print("ERROR: A valid image was not selected")
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
         
     }
 }
