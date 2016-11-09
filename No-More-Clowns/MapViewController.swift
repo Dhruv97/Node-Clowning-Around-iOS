@@ -31,6 +31,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // FireBase reference created
     var fireBaseRef = DataService.ds.REF_SIGHTINGS
+    
     @IBOutlet weak var centerBtn: UIButton!
     
     // report sighting on button pressed
@@ -55,44 +56,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         DataService.ds.REF_SIGHTINGS.childByAutoId().setValue(sighting)
     }
     
+    // hide status bar
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
-    func danger() {
-    
-        DataService.ds.REF_SIGHTINGS.observe(.value, with: { (snapshot) in
-            self.dangerSign.isHidden = true
-            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                
-                for snap in snapshot {
-                    
-                    if let sightingDict = snap.value as? Dictionary<String, AnyObject> {
-                        
-                        
-                        let lat = sightingDict["lat"]
-                        let long = sightingDict["long"]
-                        
-                        let clownLocation = CLLocation(latitude: lat as! CLLocationDegrees, longitude: long as! CLLocationDegrees)
-                        
-                        let userLoc = CLLocation(latitude: self.mapView.userLocation.coordinate.latitude, longitude: self.mapView.userLocation.coordinate.longitude)
-                        
-                        if userLoc.distance(from: clownLocation) < 1609 {
-                            
-                            self.dangerSign.isHidden = false
-                            print("DANGER: A Clown was spotted nearby!")
-                        }
-                    }
-                    
-                }
-            }
-            
-        })
-    }
-    
-    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-        danger()
-    }
  
     override func viewDidLoad() {
        
@@ -105,13 +73,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapView.userTrackingMode = MKUserTrackingMode.follow
         
         
+        
         // gets all Sightings from Firebase database
         DataService.ds.REF_SIGHTINGS.observe(.value, with: { (snapshot) in
             
             let allAnnotations = self.mapView.annotations
             self.mapView.removeAnnotations(allAnnotations)
     
-            self.danger()
+           
             
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 
@@ -123,8 +92,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         let long = sightingDict["long"]
                         let clownLocation = CLLocation(latitude: lat as! CLLocationDegrees, longitude: long as! CLLocationDegrees)
                         
+                         let userLoc = CLLocation(latitude: self.mapView.userLocation.coordinate.latitude, longitude: self.mapView.userLocation.coordinate.longitude)
                         let anno = ClownAnnotation(coordinate: clownLocation.coordinate)
+                        
+                        // add clown annotation to map for each sighting in Firebase
                         self.mapView.addAnnotation(anno)
+                        
+                        // show Danger sign if clown is within a mile
+                        self.danger(userLoc: userLoc, clownLocation: clownLocation)
                         
                     }
                 }
@@ -156,16 +131,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
 
     
-  /*  // show users location if user authorized
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
-        if status == .authorizedWhenInUse {
-            
-            mapView.showsUserLocation = true
-            
-        }
-        
-    }*/
  
     
     // function used to center map to user's positon
@@ -195,6 +160,43 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
 
+    // show Danger sign if clown is within a mile
+    func danger(userLoc: CLLocation, clownLocation: CLLocation) {
+        
+        self.dangerSign.isHidden = true
+        if userLoc.distance(from: clownLocation) < 1609 {
+            
+            self.dangerSign.isHidden = false
+            print("DANGER: A Clown was spotted nearby!")
+        }
+    }
+    
+    // show Danger sign if clown is within a mile on start of app
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        DataService.ds.REF_SIGHTINGS.observe(.value, with: { (snapshot) in
+            
+            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                for snap in snapshot {
+                    
+                    if let sightingDict = snap.value as? Dictionary<String, AnyObject> {
+                        
+                        
+                        let lat = sightingDict["lat"]
+                        let long = sightingDict["long"]
+                        
+                        let clownLocation = CLLocation(latitude: lat as! CLLocationDegrees, longitude: long as! CLLocationDegrees)
+                        
+                        let userLoc = CLLocation(latitude: self.mapView.userLocation.coordinate.latitude, longitude: self.mapView.userLocation.coordinate.longitude)
+                        
+                        self.danger(userLoc: userLoc, clownLocation: clownLocation)
+                    }
+                    
+                }
+            }
+            
+        })
+    }
     
     // function for setting custom annotation
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -205,6 +207,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if annotation.isKind(of: MKUserLocation.self) {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
             annotationView?.image = UIImage(named: "person")
+            
         } else if let deqAnno = mapView.dequeueReusableAnnotationView(withIdentifier: annoIdentifier) {
             annotationView = deqAnno
             annotationView?.annotation = annotation
@@ -214,7 +217,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             annotationView = av
         }
         
-        if let annotationView = annotationView, let anno = annotation as? ClownAnnotation {
+        if let annotationView = annotationView,  let anno = annotation as? ClownAnnotation {
             
             annotationView.canShowCallout = true
             annotationView.image = UIImage(named: "icon.png")

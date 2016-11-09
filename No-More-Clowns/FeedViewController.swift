@@ -11,6 +11,7 @@ import Firebase
 
 class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
 
+    // refresh control for pull to refresh
     var refreshControl = UIRefreshControl()
     
     @IBOutlet weak var tableView: UITableView!
@@ -41,11 +42,12 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
         
     }
     
+    // load sightings on refresh
     func refreshData(sender: AnyObject) {
         loadSightings()
     }
     
-    
+    // load all sightings from Firebase
     func loadSightings() {
     
         // Firebase event listener for sightings
@@ -67,9 +69,11 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
                 }
             }
             
+            // update sightings array
             self.sightings = tempSightingsArr
             self.tableView.reloadData()
             
+            // end refreshing animation
             if self.refreshControl.isRefreshing {
                 self.refreshControl.endRefreshing()
             }
