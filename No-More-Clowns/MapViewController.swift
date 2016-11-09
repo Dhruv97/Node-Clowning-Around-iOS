@@ -41,12 +41,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // report sighting on button pressed
     @IBAction func reportSighting(_ sender: AnyObject) {
         
-        present(imagePicker, animated: true) {
+
+        present(imagePicker, animated: true, completion: nil)
         
-            // calls create sighting and adds reported sighting to database
-            self.createSightings()
-        
-        }        
     }
     
     // function to create a new Sightings object in Firebase database
@@ -97,7 +94,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
            
             
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                
+                self.dangerSign.isHidden = true
                 for snap in snapshot {
                     
                     if let sightingDict = snap.value as? Dictionary<String, AnyObject> {
@@ -177,7 +174,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // show Danger sign if clown is within a mile
     func danger(userLoc: CLLocation, clownLocation: CLLocation) {
         
-        self.dangerSign.isHidden = true
+        
         if userLoc.distance(from: clownLocation) < 1609 {
             
             self.dangerSign.isHidden = false
@@ -190,7 +187,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         DataService.ds.REF_SIGHTINGS.observe(.value, with: { (snapshot) in
             
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                
+                self.dangerSign.isHidden = true
                 for snap in snapshot {
                     
                     if let sightingDict = snap.value as? Dictionary<String, AnyObject> {
@@ -291,8 +288,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             image = selectedImg
             
+            self.createSightings()
         } else {
-            
+            letPost = false
             print("ERROR: A valid image was not selected")
         }
         imagePicker.dismiss(animated: true, completion: nil)
