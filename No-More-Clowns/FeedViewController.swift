@@ -56,11 +56,8 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
                 
                 for snap in snapshot {
                     
-                    print("SNAP: \(snap)")
-                    
                     if let sightingDict = snap.value as? Dictionary<String, AnyObject> {
                         
-                        print("LAT! \(sightingDict["lat"])")
                         let key = snap.key
                         let sighting = Sighting(sightingKey: key, sightingData: sightingDict)
                         tempSightingsArr.append(sighting)
