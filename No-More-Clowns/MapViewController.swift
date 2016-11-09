@@ -140,27 +140,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
         })
         
-        DataService.ds.REF_SIGHTINGS.observe(.childChanged, with: {(snapshot) in
-        
-            // dictionary of all values of a sighting object (lat and long)
-            let value = snapshot.value as? NSDictionary
-            
-            
-            let lat = value!["lat"] as! CLLocationDegrees
-            let long = value!["long"] as! CLLocationDegrees
-            
-            // form location for each sighting with their lat and long values
-            let loc = CLLocation(latitude: lat, longitude: long)
-            
-            
-            
-            let anno = ClownAnnotation(coordinate: loc.coordinate)
-            
-            // add annotation to map using coordinates of the reported sighting
-            self.mapView.removeAnnotation(anno)
-
-            
-        })
+   
         
     }
     

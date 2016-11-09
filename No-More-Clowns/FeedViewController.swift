@@ -11,6 +11,8 @@ import Firebase
 
 class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
 
+    var refreshControl = UIRefreshControl()
+    
     @IBOutlet weak var tableView: UITableView!
     
     // Sightings array
@@ -23,17 +25,29 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         
+        // Configure Refresh Control
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading Sightings...", attributes: nil)
+        refreshControl.addTarget(self, action: #selector(self.refreshData(sender:)), for: .valueChanged)
+        
+        // Add to Table View
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
         
         // calls function to load reported Sightings
         loadSightings()
         
     }
     
-  
+    func refreshData(sender: AnyObject) {
+        loadSightings()
+    }
+    
     
     func loadSightings() {
-        
-        
+    
         // Firebase event listener for sightings
         DataService.ds.REF_SIGHTINGS.observe(.value, with: { (snapshot) in
             var tempSightingsArr = [Sighting]()
@@ -50,13 +64,19 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
                         let key = snap.key
                         let sighting = Sighting(sightingKey: key, sightingData: sightingDict)
                         tempSightingsArr.append(sighting)
-                        self.sightings = tempSightingsArr
+                        
                     }
                     
                 }
             }
             
+            self.sightings = tempSightingsArr
             self.tableView.reloadData()
+            
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
+            
         })
         
     }
@@ -74,9 +94,9 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     // function that creates number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       
+            return sightings.count
         
-        
-        return sightings.count
     }
     
     // function for defining the cells in the rows
