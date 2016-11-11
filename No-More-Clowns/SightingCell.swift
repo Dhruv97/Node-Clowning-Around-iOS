@@ -8,6 +8,8 @@
 
 import UIKit
 import MapKit
+import Firebase
+import FirebaseStorage
 
 class SightingCell: UITableViewCell {
     
@@ -23,7 +25,7 @@ class SightingCell: UITableViewCell {
         // Initialization code
     }
 
-    func configureCell(sighting: Sighting) {
+    func configureCell(sighting: Sighting, img: UIImage? = nil) {
         
         self.sighting = sighting
         
@@ -77,7 +79,34 @@ class SightingCell: UITableViewCell {
         self.likesLabel.text = "\(sighting.likes)"
         self.postedByLabel.text = "Posted by \(sighting.postedBy)"
         
-        
+        if img != nil {
+            
+            self.sightingImg.image = img
+        } else {
+           
+            let ref = FIRStorage.storage().reference(forURL: sighting.imageURL)
+            ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                
+                if error != nil {
+                    
+                    print("IMAGE ERROR: Unable to download image")
+                } else {
+                    
+                    print("IMAGE SUCCESS: Image downloaded from Firebase Storage")
+                    
+                    if let imgData = data {
+                        
+                        if let img = UIImage(data: imgData) {
+                            
+                            self.sightingImg.image = img
+                            FeedViewController.imageCache.setObject(img, forKey: sighting.imageURL as NSString)
+                            
+                        }
+                        
+                    }
+                }
+            })
+        }
     }
     
 }

@@ -16,6 +16,7 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
     // refresh control for pull to refresh
     var refreshControl = UIRefreshControl()
     
+    static var imageCache: NSCache<NSString, UIImage> = NSCache()
     @IBOutlet weak var tableView: UITableView!
     
     // Sightings array
@@ -111,10 +112,21 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
         // declare cell
         if let cell = tableView.dequeueReusableCell(withIdentifier: "SightingCell") as? SightingCell {
             
-            // configure cell using data from the sighting
-            cell.configureCell(sighting: sighting)
             
-            return cell
+            
+            if let img = FeedViewController.imageCache.object(forKey: sighting.imageURL as NSString) {
+                
+                 // configure cell using data from the sighting
+                cell.configureCell(sighting: sighting, img: img)
+                
+                return cell
+                
+            } else {
+                
+                cell.configureCell(sighting: sighting)
+                return cell;
+            }
+     
             
         } else {
             
