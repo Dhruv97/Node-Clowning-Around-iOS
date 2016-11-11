@@ -290,11 +290,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             self.createSightings()
         } else {
-            letPost = false
+            
             print("ERROR: A valid image was not selected")
         }
         imagePicker.dismiss(animated: true, completion: nil)
-        
     }
 }
 

@@ -16,6 +16,7 @@
 		FC3CA8D41DD06F06007F4C9D /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3CA8D31DD06F06007F4C9D /* DataService.swift */; };
 		FC3CA8D61DD1851E007F4C9D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC3CA8D51DD1851E007F4C9D /* GoogleService-Info.plist */; };
 		FC3CA8D81DD1A492007F4C9D /* Sighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3CA8D71DD1A492007F4C9D /* Sighting.swift */; };
+		FC3CA8F81DD52EE6007F4C9D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3CA8F71DD52EE6007F4C9D /* User.swift */; };
 		FC45DDEB1DCEF5FE00E4499B /* ClownAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */; };
 		FC6D8F9B1DCFA9FE0002722F /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6D8F9A1DCFA9FE0002722F /* SignIn.storyboard */; };
 		FC6D8F9D1DCFB12D0002722F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6D8F9C1DCFB12D0002722F /* SignInViewController.swift */; };
@@ -40,6 +41,7 @@
 		FC3CA8D31DD06F06007F4C9D /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		FC3CA8D51DD1851E007F4C9D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../.Trash/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC3CA8D71DD1A492007F4C9D /* Sighting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sighting.swift; sourceTree = "<group>"; };
+		FC3CA8F71DD52EE6007F4C9D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FC45C1C21DCAC7890057ED56 /* No-More-Clowns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No-More-Clowns.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClownAnnotation.swift; sourceTree = "<group>"; };
 		FC6D8F9A1DCFA9FE0002722F /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				FC45DDEA1DCEF5FE00E4499B /* ClownAnnotation.swift */,
 				FC3CA8D71DD1A492007F4C9D /* Sighting.swift */,
+				FC3CA8F71DD52EE6007F4C9D /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				FC762B921DD015A000A6C71F /* FeedViewController.swift in Sources */,
 				FCE6C9471DC84A7E0064CF46 /* AppDelegate.swift in Sources */,
 				FC45DDEB1DCEF5FE00E4499B /* ClownAnnotation.swift in Sources */,
+				FC3CA8F81DD52EE6007F4C9D /* User.swift in Sources */,
 				FC3572D31DD046DD0011666E /* Constants.swift in Sources */,
 				FC3CA8D81DD1A492007F4C9D /* Sighting.swift in Sources */,
 				FC3CA8D41DD06F06007F4C9D /* DataService.swift in Sources */,

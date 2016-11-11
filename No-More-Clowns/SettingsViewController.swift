@@ -12,7 +12,12 @@ import FirebaseAuth
 import SwiftKeychainWrapper
 
 class SettingsViewController: UIViewController {
+    @IBOutlet weak var emailLabel: UILabel!
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var editTextField: UITextField!
+    @IBOutlet weak var editView: UIVisualEffectView!
+    @IBOutlet weak var signOutBtn: UIButton!
     // Sign out user
     @IBAction func signOutPressed(_ sender: AnyObject) {
         
@@ -23,7 +28,7 @@ class SettingsViewController: UIViewController {
         // sign out on Firebase
         try! FIRAuth.auth()?.signOut()
         print("User signed out")
-        
+
         // segue to sign in screen
         self.performSegue(withIdentifier: "goToSignIn", sender: self)
         
@@ -37,15 +42,41 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        emailLabel.text = FIRAuth.auth()?.currentUser?.email
+       
+         signOutBtn.setImage(UIImage(named:"signout2.png"), for: .highlighted)
+            let user = FIRAuth.auth()?.currentUser
+        DataService.ds.REF_USERS.child((user?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let value = snapshot.value as? NSDictionary
+            let username = value!["username"]
+            
+            self.nameLabel.text = username as! String?
+        
+        })
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+   
+    @IBAction func editName(_ sender: AnyObject) {
+        
+        editView.isHidden = false
+        
+        
     }
     
-
+    @IBAction func editSubmit(_ sender: AnyObject) {
+        
+        if (editTextField.text?.characters.count)! > 0 {
+            
+            nameLabel.text = editTextField.text
+        }
+        
+        editView.isHidden = true
+        let username = nameLabel.text
+        let userData = ["username":username]
+       DataService.ds.createFirebaseDBUser(uid: (FIRAuth.auth()?.currentUser?.uid)!, userData: userData as! Dictionary<String, String>)
+    }
+    
     /*
     // MARK: - Navigation
 

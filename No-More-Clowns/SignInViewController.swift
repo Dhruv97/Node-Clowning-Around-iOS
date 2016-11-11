@@ -73,9 +73,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 
                 if let user = user {
                     
-                    let userData = ["provider": credential.provider]
-                    
-                    self.completeSignIn(id: user.uid, userData: userData)
+                     let userData = ["email": user.email, "username" : user.displayName, "provider": credential.provider]
+                    self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
                 }
                 
                 
@@ -145,7 +144,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             if let email = emailField.text, let password = passwordField.text {
                 
                 // If user exists, sign user in
-                
                 FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
                     
                     if error == nil {
@@ -154,13 +152,14 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                         
                         if let user = user {
                             
-                            let userData = ["provider": user.providerID]
-                            self.completeSignIn(id: user.uid, userData: userData)
+                            let userData = ["email": user.email, "username" : "", "provider": user.providerID]
+                            self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
                             
                         }
                         
                         
                     } else {
+                        
                         
                         // If user does not exist, sign up user
                         
@@ -176,8 +175,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                                 
                                 if let user = user {
                        
-                                    let userData = ["provider": user.providerID]
-                                    self.completeSignIn(id: user.uid, userData: userData)
+                                    let userData = ["email": user.email, "username" : "", "provider": user.providerID]
+                                    self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
                                 }
                                 
                                 
@@ -240,20 +239,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-   /* override func viewWillAppear(_ animated: Bool) {
-        
-        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
-            if let user = user {
-                // User is signed in.
-                print("\(user.email) is signed in")
-                 self.performSegue(withIdentifier: "Map", sender: self)
-            } else {
-                // No user is signed in.
-                print("Sign In")
-            }
-        }
-        
-    }*/
 
     // dismiss keyboard on touch outside of keyboard
     func dismissKeyboard() {
