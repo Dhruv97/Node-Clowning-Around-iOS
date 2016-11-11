@@ -16,6 +16,7 @@ class Sighting {
     private var _long: CLLocationDegrees!
     private var _imageURL: String!
     private var _likes: Int!
+    private var _postedBy: String!
     private var _sightingKey: String!
     
     var lat: CLLocationDegrees {
@@ -38,17 +39,23 @@ class Sighting {
         return _likes
     }
     
+    var postedBy: String {
+        
+        return _postedBy
+    }
+    
     var sightingKey: String {
         
         return _sightingKey
     }
     
-    init(lat: CLLocationDegrees, long: CLLocationDegrees, imageURL: String, likes: Int) {
+    init(lat: CLLocationDegrees, long: CLLocationDegrees, imageURL: String, likes: Int, postedBy: String) {
         
         self._lat = lat
         self._long = long
         self._imageURL = imageURL
         self._likes = likes
+        self._postedBy = postedBy
         
     }
     
@@ -74,6 +81,11 @@ class Sighting {
         if let likes = sightingData["likes"] as? Int {
             
             self._likes = likes
+        }
+        
+        if let postedBy = sightingData["postedBy"] as? String {
+            
+            self._postedBy = postedBy
         }
         
     }

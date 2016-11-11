@@ -175,7 +175,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                                 
                                 if let user = user {
                        
-                                    let userData = ["email": user.email, "username" : "", "provider": user.providerID]
+                                    let userData = ["email": user.email, "username" : "Anon", "provider": user.providerID]
                                     self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
                                 }
                                 

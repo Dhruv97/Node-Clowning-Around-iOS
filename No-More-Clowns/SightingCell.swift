@@ -15,6 +15,7 @@ class SightingCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var likesLabel: UILabel!
     
+    @IBOutlet weak var postedByLabel: UILabel!
     var sighting: Sighting!
 
     override func awakeFromNib() {
@@ -74,6 +75,7 @@ class SightingCell: UITableViewCell {
         }
         
         self.likesLabel.text = "\(sighting.likes)"
+        self.postedByLabel.text = "Posted by \(sighting.postedBy)"
         
         
     }

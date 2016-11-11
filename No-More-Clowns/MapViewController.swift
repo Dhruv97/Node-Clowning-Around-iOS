@@ -10,7 +10,7 @@
 import UIKit
 import MapKit
 import Firebase
-
+import FirebaseAuth
 
 // include mapview delegate and location manager delegate
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -22,7 +22,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var image: UIImage? = nil
     
     var sightings = [Sighting]()
-    
+    var sighting: [String: AnyObject] = [:]
     // location managager init
     let locationManager = CLLocationManager()
     
@@ -42,7 +42,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBAction func reportSighting(_ sender: AnyObject) {
         
 
-        present(imagePicker, animated: true, completion: nil)
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+            
+        } else {
+            
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
         
     }
     
@@ -54,10 +65,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let lat = location.coordinate.latitude
         let long = location.coordinate.longitude
         
-        // define sighting object
-         let sighting: [String: AnyObject] = ["lat" : lat as AnyObject, "long": long as AnyObject, "imageURL": "" as AnyObject, "likes": 0 as AnyObject]
+        let user = FIRAuth.auth()?.currentUser
+        
+        DataService.ds.REF_USERS.child((user?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
+        
+            let value = snapshot.value as? NSDictionary
+            let username = (value!["username"] as? String)!
+            // define sighting object
+            self.sighting = ["lat" : lat as AnyObject, "long": long as AnyObject, "imageURL": "" as AnyObject, "likes": 0 as AnyObject, "postedBy": username as AnyObject]
+             DataService.ds.REF_SIGHTINGS.childByAutoId().setValue(self.sighting)
+        })
+        
+        
         // add sighting to database
-        DataService.ds.REF_SIGHTINGS.childByAutoId().setValue(sighting)
+       
     }
     
     // hide status bar

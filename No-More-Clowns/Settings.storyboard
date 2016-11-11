@@ -19,6 +19,12 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vlc-ob-Fdq" customClass="FancyView" customModule="No_More_Clowns" customModuleProvider="target">
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon2" translatesAutoresizingMaskIntoConstraints="NO" id="e6A-rW-PDd">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="185" id="E6p-A5-kTj"/>
+                                            <constraint firstAttribute="width" constant="178" id="Y2W-v1-1lK"/>
+                                        </constraints>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NB1-z5-gFd">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="210" id="KrA-PP-CB9"/>
@@ -47,31 +53,22 @@
                                         <color key="textColor" red="0.87843137250000003" green="0.20000000000000001" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vD-Y6-VAJ">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="6PH-pZ-G5e"/>
-                                            <constraint firstAttribute="height" constant="24" id="P7o-Qg-mok"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                        <color key="textColor" red="0.87843137250000003" green="0.20000000000000001" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucs-hc-Ets">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="CcD-dp-YKU"/>
-                                            <constraint firstAttribute="width" constant="125" id="NqW-r3-Mrp"/>
+                                            <constraint firstAttribute="width" constant="125" id="DDb-dP-Aeh"/>
+                                            <constraint firstAttribute="height" constant="30" id="Y1v-21-eOH"/>
                                         </constraints>
                                         <state key="normal" title="Edit Display Name"/>
                                         <connections>
                                             <action selector="editName:" destination="xo0-c3-r2a" eventType="touchUpInside" id="Qs6-i7-QCz"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dhruv Upadhyay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zly-TT-He9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, Dhruv Upadhyay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zly-TT-He9">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="128" id="ffw-Ub-cTU"/>
-                                            <constraint firstAttribute="height" constant="21" id="uxu-DW-5JH"/>
+                                            <constraint firstAttribute="width" constant="327" id="L72-qW-S2K"/>
+                                            <constraint firstAttribute="height" constant="24" id="Pfb-To-hgE"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                         <color key="textColor" red="0.87843137250000003" green="0.20000000000000001" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -134,28 +131,28 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="ucs-hc-Ets" firstAttribute="top" secondItem="zly-TT-He9" secondAttribute="bottom" constant="14" id="3bI-TH-SPm"/>
+                                    <constraint firstItem="zly-TT-He9" firstAttribute="centerX" secondItem="Vlc-ob-Fdq" secondAttribute="centerX" id="3Jc-Rc-mEN"/>
                                     <constraint firstItem="Scq-uk-JL8" firstAttribute="top" secondItem="Vlc-ob-Fdq" secondAttribute="top" constant="297" id="4ob-Wk-k93"/>
-                                    <constraint firstItem="zly-TT-He9" firstAttribute="top" secondItem="3vD-Y6-VAJ" secondAttribute="bottom" constant="16" id="JiI-Ad-Umf"/>
-                                    <constraint firstItem="3vD-Y6-VAJ" firstAttribute="top" secondItem="Vlc-ob-Fdq" secondAttribute="top" constant="149" id="LvW-KH-IbS"/>
+                                    <constraint firstItem="ucs-hc-Ets" firstAttribute="centerX" secondItem="Vlc-ob-Fdq" secondAttribute="centerX" id="A2g-01-FbY"/>
+                                    <constraint firstItem="e6A-rW-PDd" firstAttribute="centerX" secondItem="Vlc-ob-Fdq" secondAttribute="centerX" id="FIx-Kw-bct"/>
                                     <constraint firstItem="fiA-7g-8Ha" firstAttribute="leading" secondItem="Vlc-ob-Fdq" secondAttribute="leading" constant="-16" id="S7x-2Y-0sM"/>
                                     <constraint firstItem="NB1-z5-gFd" firstAttribute="centerX" secondItem="Vlc-ob-Fdq" secondAttribute="centerX" id="S8m-49-tQm"/>
                                     <constraint firstItem="fiA-7g-8Ha" firstAttribute="top" secondItem="Vlc-ob-Fdq" secondAttribute="top" constant="-39" id="UZH-U5-s1F"/>
-                                    <constraint firstItem="ucs-hc-Ets" firstAttribute="centerX" secondItem="Vlc-ob-Fdq" secondAttribute="centerX" id="Vao-z8-3o8"/>
                                     <constraint firstAttribute="trailing" secondItem="fiA-7g-8Ha" secondAttribute="trailing" constant="-16" id="WSJ-bm-MqU"/>
-                                    <constraint firstItem="zly-TT-He9" firstAttribute="centerX" secondItem="Vlc-ob-Fdq" secondAttribute="centerX" id="Yy8-Yw-Nsj"/>
+                                    <constraint firstItem="e6A-rW-PDd" firstAttribute="top" secondItem="Vlc-ob-Fdq" secondAttribute="top" constant="14" id="a7y-Xx-BZB"/>
+                                    <constraint firstItem="zly-TT-He9" firstAttribute="top" secondItem="e6A-rW-PDd" secondAttribute="bottom" constant="9" id="bG1-dD-Hax"/>
                                     <constraint firstAttribute="bottom" secondItem="fiA-7g-8Ha" secondAttribute="bottom" constant="-71" id="dWT-Do-pFS"/>
                                     <constraint firstItem="NB1-z5-gFd" firstAttribute="top" secondItem="S1x-xD-UTk" secondAttribute="bottom" constant="42" id="e3A-5m-Nq3"/>
-                                    <constraint firstItem="3vD-Y6-VAJ" firstAttribute="centerX" secondItem="Vlc-ob-Fdq" secondAttribute="centerX" id="gQW-hs-PcN"/>
                                     <constraint firstItem="S1x-xD-UTk" firstAttribute="centerX" secondItem="Vlc-ob-Fdq" secondAttribute="centerX" id="nnc-Lv-eto"/>
                                     <constraint firstItem="S1x-xD-UTk" firstAttribute="top" secondItem="Scq-uk-JL8" secondAttribute="bottom" constant="20" id="qdo-Ge-18T"/>
+                                    <constraint firstItem="ucs-hc-Ets" firstAttribute="top" secondItem="zly-TT-He9" secondAttribute="bottom" constant="13" id="sL6-uE-Fff"/>
                                     <constraint firstItem="Scq-uk-JL8" firstAttribute="centerX" secondItem="Vlc-ob-Fdq" secondAttribute="centerX" id="wye-kw-nzr"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.20784313730000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Vlc-ob-Fdq" firstAttribute="top" secondItem="Yo5-VJ-PAI" secondAttribute="bottom" constant="16" id="2M9-56-RyG"/>
+                            <constraint firstItem="Vlc-ob-Fdq" firstAttribute="top" secondItem="Yo5-VJ-PAI" secondAttribute="bottom" constant="22" id="2M9-56-RyG"/>
                             <constraint firstItem="J9M-9w-xG3" firstAttribute="top" secondItem="Vlc-ob-Fdq" secondAttribute="bottom" constant="22" id="bqO-WR-9ff"/>
                             <constraint firstItem="Vlc-ob-Fdq" firstAttribute="leading" secondItem="SQJ-13-6IN" secondAttribute="leading" constant="16" id="gTv-PH-5nI"/>
                             <constraint firstAttribute="trailing" secondItem="Vlc-ob-Fdq" secondAttribute="trailing" constant="16" id="hcK-OO-jYz"/>
@@ -186,6 +183,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon2" width="378" height="378"/>
         <image name="settings" width="30" height="30"/>
         <image name="signout" width="375" height="120"/>
     </resources>
