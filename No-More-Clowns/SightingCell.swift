@@ -98,6 +98,7 @@ class SightingCell: UITableViewCell {
                         
                         if let img = UIImage(data: imgData) {
                             
+                            // set the image to image from cache
                             self.sightingImg.image = img
                             FeedViewController.imageCache.setObject(img, forKey: sighting.imageURL as NSString)
                             

@@ -20,6 +20,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var dangerSign: UIImageView!
     
     var image: UIImage? = nil
+    var imgURL: String = ""
     
     var sightings = [Sighting]()
     var sighting: [String: AnyObject] = [:]
@@ -71,14 +72,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
             let value = snapshot.value as? NSDictionary
             let username = (value!["username"] as? String)!
+            
             // define sighting object
-            self.sighting = ["lat" : lat as AnyObject, "long": long as AnyObject, "imageURL": "" as AnyObject, "likes": 0 as AnyObject, "postedBy": username as AnyObject]
+            self.sighting = ["lat" : lat as AnyObject, "long": long as AnyObject, "imageURL": self.imgURL as AnyObject, "likes": 0 as AnyObject, "postedBy": username as AnyObject]
+            
+            // add sighting to database
+
              DataService.ds.REF_SIGHTINGS.childByAutoId().setValue(self.sighting)
         })
         
         
-        // add sighting to database
-       
+        
     }
     
     // hide status bar
@@ -308,8 +312,34 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if let selectedImg = info[UIImagePickerControllerEditedImage] as? UIImage {
             
             image = selectedImg
+            if let imgData = UIImageJPEGRepresentation(image!, 0.2) {
+                
+                let imgUID = NSUUID().uuidString
+                let metaData = FIRStorageMetadata()
+                metaData.contentType = "image/jpeg"
+                
+                DataService.ds.REF_SIGHTINGS_IMAGES.child(imgUID).put(imgData, metadata: metaData) { (metaData, error) in
+                
+                    if error != nil {
+                        
+                        print("IMAGE UPLOAD ERROR: Image wasn't uploaded to Firebase")
+                    } else {
+                        
+                        print("IMAGE UPLOAD SUCCESS: Image was uploaded to Firebase")
+                        let downLoadURL = metaData?.downloadURL()?.absoluteString
+                        if let url = downLoadURL {
+                            
+                            self.imgURL = url
+                            self.createSightings()
+                            print("IMAGE URL: \(self.imgURL)")
+
+                        }
+                    }
+                
+                }
+                
+            }
             
-            self.createSightings()
         } else {
             
             print("ERROR: A valid image was not selected")
