@@ -21,6 +21,8 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
+
+    
     // Sightings array
     var sightings = [Sighting]()
     

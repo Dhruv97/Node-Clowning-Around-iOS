@@ -314,7 +314,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if let selectedImg = info[UIImagePickerControllerEditedImage] as? UIImage {
             
             image = selectedImg
-            if let imgData = UIImageJPEGRepresentation(image!, 0.0) {
+            if let imgData = UIImageJPEGRepresentation(image!, 0.2) {
                 
                 let imgUID = NSUUID().uuidString
                 let metaData = FIRStorageMetadata()

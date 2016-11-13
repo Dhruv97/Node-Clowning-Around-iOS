@@ -46,6 +46,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
        
          signOutBtn.setImage(UIImage(named:"signout2.png"), for: .highlighted)
             let user = FIRAuth.auth()?.currentUser
+        
         DataService.ds.REF_USERS.child((user?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let value = snapshot.value as? NSDictionary
@@ -75,6 +76,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         let username = nameLabel.text
         let userData = ["username":username]
        DataService.ds.createFirebaseDBUser(uid: (FIRAuth.auth()?.currentUser?.uid)!, userData: userData as! Dictionary<String, String>)
+        self.dismissKeyboard()
     }
     
     // dismiss keyboard on touch outside of keyboard

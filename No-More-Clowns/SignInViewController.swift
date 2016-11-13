@@ -19,6 +19,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailField: UITextField!
     
+    var username = "a"
     
     @IBOutlet weak var passwordField: UITextField!
     
@@ -73,15 +74,25 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 
                 if let user = user {
                     
-                     let userData = ["email": user.email, "username" : user.displayName, "provider": credential.provider]
-                    self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
+                    
+                    DataService.ds.REF_USERS.child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        let value = snapshot.value as? NSDictionary
+                        if let username = value?["username"]  {
+                            
+                            let userData = ["email": user.email, "username" : username, "provider": credential.provider]
+                            self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
+                            
+                        } else {
+                            
+                            let userData = ["email": user.email, "username" : user.displayName, "provider": credential.provider]
+                            self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
+                            
+                        }
+                    })
                 }
-                
-                
             }
-            
         })
-        
     }
     
     // Sign in/up without Facebook
@@ -152,7 +163,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                         
                         if let user = user {
                             
-                            let userData = ["email": user.email, "username" : "", "provider": user.providerID]
+                            let userData = ["email": user.email, "provider": user.providerID]
                             self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
                             
                         }

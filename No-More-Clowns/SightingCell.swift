@@ -20,6 +20,8 @@ class SightingCell: UITableViewCell {
     @IBOutlet weak var postedByLabel: UILabel!
     var sighting: Sighting!
 
+    @IBOutlet weak var likeImg: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -108,6 +110,8 @@ class SightingCell: UITableViewCell {
                 }
             })
         }
+   //     likesRef = DataService.ds._REF_USER_CURRENT.child("likes")
+        
     }
     
 }
