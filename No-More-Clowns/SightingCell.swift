@@ -76,7 +76,7 @@ class SightingCell: UITableViewCell {
             
         }
         
-        self.likesLabel.text = "\(sighting.likes)"
+        self.likesLabel.text = "Likes: \(sighting.likes)"
         self.postedByLabel.text = "Posted by \(sighting.postedBy)"
         
         if img != nil {

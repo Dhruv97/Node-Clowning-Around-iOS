@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import SwiftKeychainWrapper
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailLabel: UILabel!
 
     @IBOutlet weak var nameLabel: UILabel!
@@ -77,14 +77,18 @@ class SettingsViewController: UIViewController {
        DataService.ds.createFirebaseDBUser(uid: (FIRAuth.auth()?.currentUser?.uid)!, userData: userData as! Dictionary<String, String>)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // dismiss keyboard on touch outside of keyboard
+    func dismissKeyboard() {
+        
+       editTextField.resignFirstResponder()
+        
     }
-    */
+    
+    // dismiss keyboard on done/return pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
 
 }

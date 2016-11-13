@@ -11,6 +11,7 @@ import UIKit
 import MapKit
 import Firebase
 import FirebaseAuth
+import FirebaseStorage
 
 // include mapview delegate and location manager delegate
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -45,6 +46,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             
+
             imagePicker.sourceType = UIImagePickerControllerSourceType.camera
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
@@ -312,7 +314,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if let selectedImg = info[UIImagePickerControllerEditedImage] as? UIImage {
             
             image = selectedImg
-            if let imgData = UIImageJPEGRepresentation(image!, 0.2) {
+            if let imgData = UIImageJPEGRepresentation(image!, 0.0) {
                 
                 let imgUID = NSUUID().uuidString
                 let metaData = FIRStorageMetadata()
@@ -329,6 +331,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         let downLoadURL = metaData?.downloadURL()?.absoluteString
                         if let url = downLoadURL {
                             
+                           
                             self.imgURL = url
                             self.createSightings()
                             print("IMAGE URL: \(self.imgURL)")
@@ -343,8 +346,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         } else {
             
             print("ERROR: A valid image was not selected")
+          
         }
         imagePicker.dismiss(animated: true, completion: nil)
     }
+    
+    
 }
 
