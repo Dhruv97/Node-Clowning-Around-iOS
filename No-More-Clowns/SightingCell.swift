@@ -18,18 +18,31 @@ class SightingCell: UITableViewCell {
     @IBOutlet weak var likesLabel: UILabel!
     
     @IBOutlet weak var postedByLabel: UILabel!
+    
     var sighting: Sighting!
 
+    var likesRef: FIRDatabaseReference!
+    
     @IBOutlet weak var likeImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+       
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
+        tap.numberOfTapsRequired = 1
+        likeImg.addGestureRecognizer(tap)
+        likeImg.isUserInteractionEnabled = true
+        
     }
 
     func configureCell(sighting: Sighting, img: UIImage? = nil) {
         
+        
         self.sighting = sighting
+        
+        self.likesRef = DataService.ds._REF_USER_CURRENT.child("liked").child(sighting.sightingKey)
+
         
         let location = CLLocation(latitude: sighting.lat, longitude: sighting.long)
         
@@ -110,8 +123,37 @@ class SightingCell: UITableViewCell {
                 }
             })
         }
-   //     likesRef = DataService.ds._REF_USER_CURRENT.child("likes")
         
+        
+        likesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        
+            if let _ = snapshot.value as? NSNull {
+                
+                self.likeImg.image = UIImage(named: "empty-heart.png")
+         
+            } else {
+                
+                self.likeImg.image = UIImage(named: "filled-heart.png")
+            }
+        })
     }
     
+    func likeTapped(sender: UITapGestureRecognizer) {
+        
+        likesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let _ = snapshot.value as? NSNull {
+                
+                self.likeImg.image = UIImage(named: "filled-heart.png")
+                self.sighting.adjustLikes(addLike: true)
+                self.likesRef.setValue(true)
+                
+            } else {
+                
+                self.likeImg.image = UIImage(named: "empty-heart.png")
+                self.sighting.adjustLikes(addLike: false)
+                self.likesRef.removeValue()
+            }
+        })
+    }
 }

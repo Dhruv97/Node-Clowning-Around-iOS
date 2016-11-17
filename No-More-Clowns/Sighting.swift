@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import Firebase
 
 class Sighting {
     
@@ -18,6 +19,7 @@ class Sighting {
     private var _likes: Int!
     private var _postedBy: String!
     private var _sightingKey: String!
+    private var _sightingRef: FIRDatabaseReference!
     
     var lat: CLLocationDegrees {
         
@@ -88,6 +90,21 @@ class Sighting {
             self._postedBy = postedBy
         }
         
+        _sightingRef = DataService.ds.REF_SIGHTINGS.child(_sightingKey)
+        
+    }
+    
+    func adjustLikes(addLike: Bool) {
+        
+        if addLike {
+            
+            _likes = _likes + 1
+        } else {
+            
+            _likes = _likes - 1
+        }
+        
+        _sightingRef.child("likes").setValue(_likes)
     }
     
 }

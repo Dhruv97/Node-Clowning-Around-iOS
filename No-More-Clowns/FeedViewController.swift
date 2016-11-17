@@ -77,7 +77,7 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
             }
             
             // update sightings array
-            self.sightings = tempSightingsArr
+            self.sightings = tempSightingsArr.reversed()
             self.tableView.reloadData()
             
             // end refreshing animation
@@ -122,37 +122,18 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
                 
                  // configure cell using data from the sighting
                 cell.configureCell(sighting: sighting, img: img)
-                
-                return cell
-                
+
             } else {
                 
                 cell.configureCell(sighting: sighting)
-                return cell;
             }
-     
-            
+            return cell
+ 
         } else {
             
             return SightingCell()
             
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -25,6 +25,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var sightings = [Sighting]()
     var sighting: [String: AnyObject] = [:]
+    
     // location managager init
     let locationManager = CLLocationManager()
     
@@ -82,9 +83,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
              DataService.ds.REF_SIGHTINGS.childByAutoId().setValue(self.sighting)
         })
-        
-        
-        
     }
     
     // hide status bar
@@ -131,7 +129,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         let clownLocation = CLLocation(latitude: lat as! CLLocationDegrees, longitude: long as! CLLocationDegrees)
                         
                          let userLoc = CLLocation(latitude: self.mapView.userLocation.coordinate.latitude, longitude: self.mapView.userLocation.coordinate.longitude)
-                        let anno = ClownAnnotation(coordinate: clownLocation.coordinate)
+                        let postedBy = sightingDict["postedBy"]
+                        
+                        let info = "A Clown was recently reported by \(postedBy!)"
+                        
+                        let anno = ClownAnnotation(coordinate: clownLocation.coordinate, info: info)
+                       
                         
                         // add clown annotation to map for each sighting in Firebase
                         self.mapView.addAnnotation(anno)
@@ -267,18 +270,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
         }
         
-        
-        
         return annotationView
     }
     
 
     
-   /* func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         if let anno = view.annotation as? ClownAnnotation {
             
-            var place: MKPlacemark!
+            print("INFO: \(anno.info)")
+            
+           /* var place: MKPlacemark!
             
             if #available(iOS 10.0, *) {
                  place = MKPlacemark(coordinate: anno.coordinate)
@@ -293,9 +296,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let options = [MKLaunchOptionsMapCenterKey: NSValue (mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span), MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving] as [String : Any]
             
             MKMapItem.openMaps(with: [dest], launchOptions: options)
+ */
         }
         
-    }*/
+    }
     
     // center map view back to user location on center button press
     @IBAction func centerPressed(_ sender: AnyObject) {

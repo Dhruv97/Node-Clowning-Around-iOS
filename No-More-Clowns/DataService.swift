@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import SwiftKeychainWrapper
+import FirebaseStorage
 
 let DB_BASE = FIRDatabase.database().reference()
 let STORAGE_BASE = FIRStorage.storage().reference()
@@ -47,8 +48,7 @@ class DataService {
         
         let user = REF_USERS.child(uid!)
          
-            return user
-
+        return user
             
     }
     
