@@ -1,13 +1,19 @@
 # Node-Clowning-Around-iOS
 iOS version of https://nodemoreclowns.herokuapp.com (MHacks 8 Project). Tackles clown epidemic of 2016 by letting users post sightings of clowns on the map and letting other users know if and where a clown was seen nearby.
  
- [x] User can log in using email/password.
- [x] User can log in using Facebook.
- [x] User can post sightings on the map with a picture of the sighting.
- [x] Alert box shows up if user is within a mile of a recent sighting.
- [x] Table view displays the sighting and its location + picture.
- [x] Users can "like" sightings in table view.
+ -[x] User can log in using email/password.
+ -[x] User can log in using Facebook.
+ -[x] User can post sightings on the map with a picture of the sighting.
+ -[x] Alert box shows up if user is within a mile of a recent sighting.
+ -[x] Table view displays the sighting and its location + picture.
+ -[x] Users can "like" sightings in table view.
  
+ 
+ ## Cocoapods used
+
+- Firebase, FirebaseDatabase, FirebaseAuth, FirebaseStorage
+- FBSDKCoreKit, FBSDkLoginKit
+- SwiftKeychainWrapper
  
 ## Video Walkthrough 
 
@@ -17,12 +23,6 @@ Here's a walkthrough of implemented user stories:
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
-
-## Cocoapods used
-
-- Firebase, FirebaseDatabase, FirebaseAuth, FirebaseStorage
-- FBSDKCoreKit, FBSDkLoginKit
-- SwiftKeychainWrapper
 
 ## License
 
