@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="k6j-4t-oEY"/>
@@ -42,7 +42,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bar" translatesAutoresizingMaskIntoConstraints="NO" id="DaW-ky-mH8">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="2fg-VG-GxG"/>
-                                    <constraint firstAttribute="width" constant="393" id="ccP-bf-1u0"/>
                                 </constraints>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="danger" translatesAutoresizingMaskIntoConstraints="NO" id="t3n-c4-vB3">
@@ -57,23 +56,35 @@
                                     <constraint firstAttribute="width" constant="219" id="jmi-Wa-zr5"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTH-dY-YX0">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="2VI-xN-mNi"/>
+                                    <constraint firstAttribute="height" constant="20" id="gV0-mD-Rgp"/>
+                                </constraints>
+                                <state key="normal" image="refresh"/>
+                                <connections>
+                                    <action selector="refresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eft-6U-iKU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="t3n-c4-vB3" firstAttribute="top" secondItem="DaW-ky-mH8" secondAttribute="bottom" constant="8" id="2jS-y0-cev"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kXf-Fu-vCb" secondAttribute="bottom" constant="55" id="6bU-Xl-2mY"/>
                             <constraint firstItem="THI-fC-Hn9" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="6ie-xf-mJM"/>
+                            <constraint firstAttribute="bottom" secondItem="k6j-4t-oEY" secondAttribute="bottom" id="8ag-tf-Wmg"/>
                             <constraint firstItem="kXf-Fu-vCb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AbC-ge-CIn"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="THI-fC-Hn9" secondAttribute="bottom" constant="170" id="Ano-Sj-4Mt"/>
-                            <constraint firstItem="k6j-4t-oEY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CWN-PV-Kkf"/>
                             <constraint firstItem="t3n-c4-vB3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HS4-hH-eoi"/>
                             <constraint firstItem="DaW-ky-mH8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-7" id="Jzd-Dr-Va7"/>
+                            <constraint firstAttribute="trailing" secondItem="k6j-4t-oEY" secondAttribute="trailing" id="OGi-w3-rBI"/>
+                            <constraint firstItem="k6j-4t-oEY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SUS-x9-fts"/>
                             <constraint firstItem="t3n-c4-vB3" firstAttribute="top" secondItem="JfI-TB-EAS" secondAttribute="bottom" constant="35" id="Uv8-3S-Noe"/>
+                            <constraint firstItem="k6j-4t-oEY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZCs-Jg-HaX"/>
                             <constraint firstItem="JfI-TB-EAS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bHf-uJ-ZcP"/>
-                            <constraint firstAttribute="bottom" secondItem="k6j-4t-oEY" secondAttribute="bottom" id="bhR-Oq-emm"/>
-                            <constraint firstAttribute="trailing" secondItem="k6j-4t-oEY" secondAttribute="trailing" id="iWr-hD-DT4"/>
+                            <constraint firstItem="t3n-c4-vB3" firstAttribute="top" secondItem="rTH-dY-YX0" secondAttribute="bottom" constant="35" id="bsC-Nc-aZ0"/>
                             <constraint firstAttribute="trailing" secondItem="DaW-ky-mH8" secondAttribute="trailing" constant="-9" id="jVj-dn-hzV"/>
-                            <constraint firstItem="k6j-4t-oEY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jdo-fP-Bly"/>
+                            <constraint firstAttribute="trailing" secondItem="rTH-dY-YX0" secondAttribute="trailing" constant="9" id="rJe-Nr-pXs"/>
                             <constraint firstItem="DaW-ky-mH8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-9" id="xTB-K9-k5H"/>
                         </constraints>
                     </view>
@@ -87,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3634.4000000000001" y="120.98950524737631"/>
+            <point key="canvasLocation" x="3712.5" y="68.661971830985919"/>
         </scene>
         <!--Feed-->
         <scene sceneID="XBk-TC-sVg">
@@ -135,6 +146,7 @@
         <image name="center" width="340" height="341"/>
         <image name="danger" width="676" height="162"/>
         <image name="list" width="25" height="23"/>
+        <image name="refresh" width="413" height="417"/>
         <image name="report" width="370" height="120"/>
         <image name="settings" width="30" height="30"/>
         <image name="text" width="372" height="107"/>

@@ -18,6 +18,7 @@ class Sighting {
     private var _imageURL: String!
     private var _likes: Int!
     private var _postedBy: String!
+    private var _timeStamp: String!
     private var _sightingKey: String!
     private var _sightingRef: FIRDatabaseReference!
     
@@ -51,13 +52,19 @@ class Sighting {
         return _sightingKey
     }
     
-    init(lat: CLLocationDegrees, long: CLLocationDegrees, imageURL: String, likes: Int, postedBy: String) {
+    var timeStamp: String {
+        
+        return _timeStamp
+    }
+    
+    init(lat: CLLocationDegrees, long: CLLocationDegrees, imageURL: String, likes: Int, postedBy: String, timeStamp: String) {
         
         self._lat = lat
         self._long = long
         self._imageURL = imageURL
         self._likes = likes
         self._postedBy = postedBy
+        self._timeStamp = timeStamp
         
     }
     
@@ -88,6 +95,11 @@ class Sighting {
         if let postedBy = sightingData["postedBy"] as? String {
             
             self._postedBy = postedBy
+        }
+        
+        if let timeStamp = sightingData["time_stamp"] as? String {
+            
+            self._timeStamp = timeStamp
         }
         
         _sightingRef = DataService.ds.REF_SIGHTINGS.child(_sightingKey)

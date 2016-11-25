@@ -81,9 +81,6 @@ class SightingCell: UITableViewCell {
                         
                     }
                     
-                    
-                    
-                    
                 }
                 
                 
@@ -92,7 +89,34 @@ class SightingCell: UITableViewCell {
         }
         
         self.likesLabel.text = "Likes: \(sighting.likes)"
-        self.postedByLabel.text = "Posted by \(sighting.postedBy)"
+        
+        let timeStamp = sighting.timeStamp
+        
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        let dateAsString = timeStamp
+        dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss zzz"
+        let date1 = dateFormatter.date(from: dateAsString )!
+        var interval = date.timeIntervalSince(date1 as Date)/3600
+       
+        
+        
+        
+        if interval < 2 && interval >= 1 {
+            
+            let intervalVal = Int(floor(interval))
+            self.postedByLabel.text = "Reported by \(sighting.postedBy) \(intervalVal) hours ago"
+
+        } else if interval < 1 {
+            interval = date.timeIntervalSince(date1 as Date)/60
+            let intervalVal = String(format: "%.0f", interval)
+            
+            self.postedByLabel.text = "Reported by \(sighting.postedBy) \(intervalVal) minutes ago"
+            
+        }
+
+        
+        
         
         if img != nil {
             

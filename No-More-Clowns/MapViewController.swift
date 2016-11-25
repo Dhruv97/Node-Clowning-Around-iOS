@@ -76,8 +76,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let value = snapshot.value as? NSDictionary
             let username = (value!["username"] as? String)!
             
+            let date = NSDate()
+            let dateFormatter = DateFormatter()
+           dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss zzz"
+            let date1 = dateFormatter.string(from: date as Date)
+            
             // define sighting object
-            self.sighting = ["lat" : lat as AnyObject, "long": long as AnyObject, "imageURL": self.imgURL as AnyObject, "likes": 0 as AnyObject, "postedBy": username as AnyObject]
+            self.sighting = ["lat" : lat as AnyObject, "long": long as AnyObject, "imageURL": self.imgURL as AnyObject, "likes": 0 as AnyObject, "postedBy": username as AnyObject, "time_stamp": date1 as AnyObject]
             
             // add sighting to database
 
@@ -90,6 +95,77 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         return true
     }
     
+    func loadSightings() {
+        
+        // gets all Sightings from Firebase database
+        DataService.ds.REF_SIGHTINGS.observe(.value, with: { (snapshot) in
+            
+            let allAnnotations = self.mapView.annotations
+            self.mapView.removeAnnotations(allAnnotations)
+            
+            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                self.dangerSign.isHidden = true
+                for snap in snapshot {
+                    
+                    if let sightingDict = snap.value as? Dictionary<String, AnyObject> {
+                        
+                        let lat = sightingDict["lat"]
+                        let long = sightingDict["long"]
+                        let clownLocation = CLLocation(latitude: lat as! CLLocationDegrees, longitude: long as! CLLocationDegrees)
+                        
+                        let userLoc = CLLocation(latitude: self.mapView.userLocation.coordinate.latitude, longitude: self.mapView.userLocation.coordinate.longitude)
+                        let postedBy = sightingDict["postedBy"]
+                        
+                        let timeStamp = sightingDict["time_stamp"]
+                        
+                        let date = Date()
+                        let dateFormatter = DateFormatter()
+                        let dateAsString = timeStamp
+                        dateFormatter.dateFormat = "dd MMM yyyy HH:mm:ss zzz"
+                        let date1 = dateFormatter.date(from: dateAsString as! String)!
+                        var interval = date.timeIntervalSince(date1 as Date)/3600
+                        print("INTERVAL: \(interval)")
+                        
+                        var message = ""
+                        var info = ""
+                        
+                        if interval > 2 {
+                            
+                            DataService.ds.REF_SIGHTINGS.child(snap.key).removeValue()
+                            print("DELETED")
+                        }
+                        
+                        if interval < 2 && interval >= 1 {
+                            
+                            let intervalVal = Int(floor(interval))
+                            info = "A Clown was recently reported by \(postedBy!) \(intervalVal) hours ago)"
+                            message = "Clown Sighted \(intervalVal) hours ago!"
+                            
+                        } else if interval < 1 {
+                            interval = date.timeIntervalSince(date1 as Date)/60
+                            let intervalVal = String(format: "%.0f", interval)
+                            info = "A Clown was recently reported by \(postedBy!) \(intervalVal) minutes ago"
+                            
+                            message = "Clown Sighted \(intervalVal) minutes ago!"
+                            
+                        }
+                        
+                        
+                        
+                        let anno = ClownAnnotation(coordinate: clownLocation.coordinate, message: message, info: info)
+                        
+                        
+                        // add clown annotation to map for each sighting in Firebase
+                        self.mapView.addAnnotation(anno)
+                        
+                        // show Danger sign if clown is within a mile
+                        self.danger(userLoc: userLoc, clownLocation: clownLocation)
+                        
+                    }
+                }
+            }
+        })
+    }
  
     override func viewDidLoad() {
        
@@ -110,50 +186,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // set imagePicker delegate
         imagePicker.delegate = self
         
-        // gets all Sightings from Firebase database
-        DataService.ds.REF_SIGHTINGS.observe(.value, with: { (snapshot) in
-            
-            let allAnnotations = self.mapView.annotations
-            self.mapView.removeAnnotations(allAnnotations)
-    
-           
-            
-            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                self.dangerSign.isHidden = true
-                for snap in snapshot {
-                    
-                    if let sightingDict = snap.value as? Dictionary<String, AnyObject> {
-                        
-                        let lat = sightingDict["lat"]
-                        let long = sightingDict["long"]
-                        let clownLocation = CLLocation(latitude: lat as! CLLocationDegrees, longitude: long as! CLLocationDegrees)
-                        
-                         let userLoc = CLLocation(latitude: self.mapView.userLocation.coordinate.latitude, longitude: self.mapView.userLocation.coordinate.longitude)
-                        let postedBy = sightingDict["postedBy"]
-                        
-                        let info = "A Clown was recently reported by \(postedBy!)"
-                        
-                        let anno = ClownAnnotation(coordinate: clownLocation.coordinate, info: info)
-                       
-                        
-                        // add clown annotation to map for each sighting in Firebase
-                        self.mapView.addAnnotation(anno)
-                        
-                        // show Danger sign if clown is within a mile
-                        self.danger(userLoc: userLoc, clownLocation: clownLocation)
-                        
-                    }
-                }
-            }
-        })
+        // load sightings
+        loadSightings()
+        
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         
         // call function to get authorization for user location when the view appears
         locationAuthStatus()
-     
+        
+    }
+    
+    @IBAction func refresh(_ sender: AnyObject) {
+        
+        loadSightings()
+        
     }
     
     

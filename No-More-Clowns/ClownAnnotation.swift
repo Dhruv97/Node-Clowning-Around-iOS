@@ -17,10 +17,10 @@ class ClownAnnotation: NSObject, MKAnnotation {
     var title:  String?
     var info: String
     
-    init(coordinate: CLLocationCoordinate2D, info: String) {
+    init(coordinate: CLLocationCoordinate2D, message: String, info: String) {
         
         self.coordinate = coordinate
-        self.message = "Clown Sighted!"
+        self.message = message
         self.title = self.message
         self.info = info
     }

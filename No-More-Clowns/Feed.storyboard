@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="m2u-BD-mb5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2Ca-hP-WMp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Pjs-Yo-Gow"/>
@@ -30,10 +30,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SightingCell" rowHeight="458" id="NR0-ho-MD2" customClass="SightingCell" customModule="No_More_Clowns" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="458"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="458"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NR0-ho-MD2" id="pwj-gU-qnZ">
-                                            <frame key="frameInset" width="375" height="458"/>
+                                            <frame key="frameInset" width="414" height="458"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fpn-1e-csJ" customClass="FancyView" customModule="No_More_Clowns" customModuleProvider="target">
@@ -76,7 +76,7 @@
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted by Dhruv Upadhyay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9T1-Fq-hnk">
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="148" id="ZOL-1m-TWu"/>
+                                                                <constraint firstAttribute="width" constant="300" id="ZOL-1m-TWu"/>
                                                                 <constraint firstAttribute="height" constant="14" id="yvW-MW-xpr"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
