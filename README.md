@@ -7,6 +7,8 @@ iOS version of https://nodemoreclowns.herokuapp.com (MHacks 8 Project). Tackles 
 - [x] Alert box shows up if user is within a mile of a recent sighting.
 - [x] Table view displays the sighting and its location + picture.
 - [x] Users can "like" sightings in table view.
+- [x] Timestamp on sightings
+- [x] Sightings will be deleted after 2 hours
 
  
 ## Cocoapods used
