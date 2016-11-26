@@ -115,38 +115,8 @@ class SightingCell: UITableViewCell {
             
         }
 
-        
-        
-        
-        if img != nil {
-            
-            self.sightingImg.image = img
-        } else {
-           
-            let ref = FIRStorage.storage().reference(forURL: sighting.imageURL)
-            ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
-                
-                if error != nil {
-                    
-                    print("IMAGE ERROR: Unable to download image")
-                } else {
-                    
-                    print("IMAGE SUCCESS: Image downloaded from Firebase Storage")
-                    
-                    if let imgData = data {
-                        
-                        if let img = UIImage(data: imgData) {
-                            
-                            // set the image to image from cache
-                            self.sightingImg.image = img
-                            FeedViewController.imageCache.setObject(img, forKey: sighting.imageURL as NSString)
-                            
-                        }
-                        
-                    }
-                }
-            })
-        }
+     
+        self.sightingImg.image = img
         
         
         likesRef.observeSingleEvent(of: .value, with: { (snapshot) in

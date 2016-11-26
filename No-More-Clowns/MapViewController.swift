@@ -16,7 +16,7 @@ import FirebaseStorage
 // include mapview delegate and location manager delegate
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    static var imageCache: NSCache<NSString, UIImage> = NSCache()
+    
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -131,10 +131,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         
                         var message = ""
                         var info = ""
-                        
+                        let imgURL = sightingDict["imageURL"]
+
                         if interval > 2 {
                             
                             DataService.ds.REF_SIGHTINGS.child(snap.key).removeValue()
+                            Sighting.imageCache.removeObject(forKey: imgURL as! NSString)
                             print("DELETED")
                         }
                         
@@ -154,7 +156,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         }
                         
                         
-                        let imgURL = sightingDict["imageURL"]
                         
                         let ref = FIRStorage.storage().reference(forURL: imgURL as! String)
                         ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
@@ -171,11 +172,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                     if let img = UIImage(data: imgData) {
                                         
                                         self.cImage = img
+                                        // add image to cache
+                                       Sighting.imageCache.setObject(img, forKey: imgURL as! NSString)
+                                        
                                         let anno = ClownAnnotation(coordinate: clownLocation.coordinate, message: message, info: info, img: self.cImage)
                                         
                                         
                                         // add clown annotation to map for each sighting in Firebase
                                         self.mapView.addAnnotation(anno)
+                                        
+                                       
 
                                     }
                                     

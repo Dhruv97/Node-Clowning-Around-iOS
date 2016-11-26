@@ -11,17 +11,10 @@ import Firebase
 
 class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
-   
-
     // refresh control for pull to refresh
     var refreshControl = UIRefreshControl()
-    
-    // Cache for storing images downloaded from Firebase
-    static var imageCache: NSCache<NSString, UIImage> = NSCache()
-    
-    @IBOutlet weak var tableView: UITableView!
-    
 
+    @IBOutlet weak var tableView: UITableView!
     
     // Sightings array
     var sightings = [Sighting]()
@@ -118,7 +111,7 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
             
             
             // sets img equal to image from Cache
-            if let img = FeedViewController.imageCache.object(forKey: sighting.imageURL as NSString) {
+            if let img = Sighting.imageCache.object(forKey: sighting.imageURL as NSString) {
                 
                  // configure cell using data from the sighting
                 cell.configureCell(sighting: sighting, img: img)

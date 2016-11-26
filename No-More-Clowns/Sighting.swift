@@ -21,6 +21,7 @@ class Sighting {
     private var _timeStamp: String!
     private var _sightingKey: String!
     private var _sightingRef: FIRDatabaseReference!
+    static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
     var lat: CLLocationDegrees {
         

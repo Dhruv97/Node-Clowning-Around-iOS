@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 import IQKeyboardManagerSwift
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -26,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configure Facebook SDK
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-       // IQKeyboardManager.sharedManager().enable = true
+       //IQKeyboardManager.sharedManager().enable = true
         
         return true
     }
