@@ -22,6 +22,7 @@
 		FC6D8F9D1DCFB12D0002722F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6D8F9C1DCFB12D0002722F /* SignInViewController.swift */; };
 		FC762B901DD0158C00A6C71F /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC762B8F1DD0158C00A6C71F /* Feed.storyboard */; };
 		FC762B921DD015A000A6C71F /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC762B911DD015A000A6C71F /* FeedViewController.swift */; };
+		FCA4FE541DE8F62200B1AE12 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4FE531DE8F62200B1AE12 /* DetailViewController.swift */; };
 		FCE6C9471DC84A7E0064CF46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE6C9461DC84A7E0064CF46 /* AppDelegate.swift */; };
 		FCE6C9491DC84A7E0064CF46 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE6C9481DC84A7E0064CF46 /* MapViewController.swift */; };
 		FCE6C94C1DC84A7E0064CF46 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE6C94A1DC84A7E0064CF46 /* Map.storyboard */; };
@@ -49,6 +50,7 @@
 		FC762B8D1DCFF53000A6C71F /* No-More-Clowns.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "No-More-Clowns.entitlements"; sourceTree = "<group>"; };
 		FC762B8F1DD0158C00A6C71F /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		FC762B911DD015A000A6C71F /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		FCA4FE531DE8F62200B1AE12 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FCE6C9461DC84A7E0064CF46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCE6C9481DC84A7E0064CF46 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FCE6C94B1DC84A7E0064CF46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				FCE6C9481DC84A7E0064CF46 /* MapViewController.swift */,
 				FC762B911DD015A000A6C71F /* FeedViewController.swift */,
 				FC3572CF1DD0432E0011666E /* SettingsViewController.swift */,
+				FCA4FE531DE8F62200B1AE12 /* DetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA4FE541DE8F62200B1AE12 /* DetailViewController.swift in Sources */,
 				FC3572D51DD050A80011666E /* SightingCell.swift in Sources */,
 				FC6D8F9D1DCFB12D0002722F /* SignInViewController.swift in Sources */,
 				FCE6C9491DC84A7E0064CF46 /* MapViewController.swift in Sources */,

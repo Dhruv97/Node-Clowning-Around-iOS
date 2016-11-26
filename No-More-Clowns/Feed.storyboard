@@ -171,7 +171,7 @@
                             <constraint firstItem="DBD-AH-b8k" firstAttribute="leading" secondItem="2Ca-hP-WMp" secondAttribute="leading" id="hsG-Ka-7g2"/>
                             <constraint firstItem="WbZ-Ls-tRf" firstAttribute="top" secondItem="Pjs-Yo-Gow" secondAttribute="bottom" constant="17" id="lBe-AP-skG"/>
                             <constraint firstItem="57u-lV-yyM" firstAttribute="top" secondItem="2Ca-hP-WMp" secondAttribute="top" constant="20" id="q6z-8L-VFg"/>
-                            <constraint firstItem="DBD-AH-b8k" firstAttribute="top" secondItem="uPI-bf-WJS" secondAttribute="bottom" constant="16" id="xSg-WZ-ExO"/>
+                            <constraint firstItem="DBD-AH-b8k" firstAttribute="top" secondItem="uPI-bf-WJS" secondAttribute="bottom" constant="-1" id="xSg-WZ-ExO"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Feed" image="list" id="aE9-Yd-6Xj"/>
@@ -181,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVe-xL-5pw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1284" y="-109.29535232383809"/>
+            <point key="canvasLocation" x="1282.608695652174" y="-110.05434782608697"/>
         </scene>
     </scenes>
     <resources>

@@ -15,10 +15,12 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="k6j-4t-oEY"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="k6j-4t-oEY">
+                                <frame key="frameInset" width="1000" height="1000"/>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXf-Fu-vCb">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="209" id="XEp-Qv-SAK"/>
@@ -94,11 +96,69 @@
                         <outlet property="centerBtn" destination="THI-fC-Hn9" id="AKU-ie-fvZ"/>
                         <outlet property="dangerSign" destination="t3n-c4-vB3" id="mmn-XY-eIf"/>
                         <outlet property="mapView" destination="k6j-4t-oEY" id="X7v-hT-SMT"/>
+                        <segue destination="3bC-yB-CeD" kind="presentation" identifier="Detail" id="zbg-Hj-I1e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3712.5" y="68.661971830985919"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Qm1-hv-q7b">
+            <objects>
+                <viewController id="3bC-yB-CeD" customClass="DetailViewController" customModule="No_More_Clowns" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M10-80-vof"/>
+                        <viewControllerLayoutGuide type="bottom" id="4fw-CE-DnN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VLU-y4-yeG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tl0-Zi-arG">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="3lU-c4-xPg"/>
+                                    <constraint firstAttribute="width" constant="343" id="BFY-dB-gZw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clownBG" translatesAutoresizingMaskIntoConstraints="NO" id="nOv-H5-K5N">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="333" id="03x-Vz-ejE"/>
+                                    <constraint firstAttribute="height" constant="310" id="QBp-Hx-4hc"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Xg-ii-tJu">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="77E-tg-4Vt"/>
+                                    <constraint firstAttribute="width" constant="46" id="FmP-wq-dB4"/>
+                                </constraints>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="close:" destination="3bC-yB-CeD" eventType="touchUpInside" id="Y6M-TJ-pjh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4Xg-ii-tJu" firstAttribute="top" secondItem="nOv-H5-K5N" secondAttribute="bottom" constant="44" id="O6a-lB-tjG"/>
+                            <constraint firstItem="nOv-H5-K5N" firstAttribute="centerX" secondItem="VLU-y4-yeG" secondAttribute="centerX" id="bFn-he-Tek"/>
+                            <constraint firstItem="Tl0-Zi-arG" firstAttribute="top" secondItem="M10-80-vof" secondAttribute="bottom" constant="70" id="fjG-b4-UyP"/>
+                            <constraint firstItem="nOv-H5-K5N" firstAttribute="top" secondItem="Tl0-Zi-arG" secondAttribute="bottom" constant="45" id="hKp-ws-stF"/>
+                            <constraint firstItem="Tl0-Zi-arG" firstAttribute="centerX" secondItem="VLU-y4-yeG" secondAttribute="centerX" id="pDH-EV-bsi"/>
+                            <constraint firstItem="4Xg-ii-tJu" firstAttribute="centerX" secondItem="VLU-y4-yeG" secondAttribute="centerX" id="sVZ-13-HTU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="infoLabel" destination="Tl0-Zi-arG" id="Zf2-lK-YAE"/>
+                        <outlet property="sightingImage" destination="nOv-H5-K5N" id="q4Z-Jt-waI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HEq-nX-fkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4656.8000000000002" y="-108.39580209895054"/>
         </scene>
         <!--Feed-->
         <scene sceneID="XBk-TC-sVg">
@@ -144,6 +204,7 @@
     <resources>
         <image name="bar" width="676" height="214"/>
         <image name="center" width="340" height="341"/>
+        <image name="clownBG" width="1440" height="900"/>
         <image name="danger" width="676" height="162"/>
         <image name="list" width="25" height="23"/>
         <image name="refresh" width="413" height="417"/>

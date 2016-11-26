@@ -16,11 +16,14 @@ import FirebaseStorage
 // include mapview delegate and location manager delegate
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    static var imageCache: NSCache<NSString, UIImage> = NSCache()
+    
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var dangerSign: UIImageView!
     
     var image: UIImage? = nil
+     var cImage: UIImage? = nil
     var imgURL: String = ""
     
     var sightings = [Sighting]()
@@ -151,12 +154,35 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         }
                         
                         
+                        let imgURL = sightingDict["imageURL"]
                         
-                        let anno = ClownAnnotation(coordinate: clownLocation.coordinate, message: message, info: info)
+                        let ref = FIRStorage.storage().reference(forURL: imgURL as! String)
+                        ref.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                            
+                            if error != nil {
+                                
+                                print("IMAGE ERROR: Unable to download image")
+                            } else {
+                                
+                                print("IMAGE SUCCESS: Image downloaded from Firebase Storage")
+                                
+                                if let imgData = data {
+                                    
+                                    if let img = UIImage(data: imgData) {
+                                        
+                                        self.cImage = img
+                                        let anno = ClownAnnotation(coordinate: clownLocation.coordinate, message: message, info: info, img: self.cImage)
+                                        
+                                        
+                                        // add clown annotation to map for each sighting in Firebase
+                                        self.mapView.addAnnotation(anno)
+
+                                    }
+                                    
+                                }
+                            }
+                        })
                         
-                        
-                        // add clown annotation to map for each sighting in Firebase
-                        self.mapView.addAnnotation(anno)
                         
                         // show Danger sign if clown is within a mile
                         self.danger(userLoc: userLoc, clownLocation: clownLocation)
@@ -329,7 +355,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             print("INFO: \(anno.info)")
             
-           /* var place: MKPlacemark!
+            performSegue(withIdentifier: "Detail", sender: anno.img)
+            /* var place: MKPlacemark!
             
             if #available(iOS 10.0, *) {
                  place = MKPlacemark(coordinate: anno.coordinate)
@@ -345,6 +372,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             MKMapItem.openMaps(with: [dest], launchOptions: options)
  */
+        }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "Detail" {
+            
+            if let detailVC = segue.destination as? DetailViewController {
+                
+                if let theImage = sender as? UIImage {
+                    
+                   detailVC.img = theImage
+                    
+                }
+                
+            }
+        
         }
         
     }

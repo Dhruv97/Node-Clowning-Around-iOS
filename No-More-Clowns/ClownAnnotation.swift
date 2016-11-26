@@ -8,6 +8,8 @@
 
 import Foundation
 import MapKit
+import FirebaseStorage
+
 class ClownAnnotation: NSObject, MKAnnotation {
     
     
@@ -16,13 +18,18 @@ class ClownAnnotation: NSObject, MKAnnotation {
     var message: String
     var title:  String?
     var info: String
+    var img: UIImage?
     
-    init(coordinate: CLLocationCoordinate2D, message: String, info: String) {
+    
+    init(coordinate: CLLocationCoordinate2D, message: String, info: String, img: UIImage?) {
         
         self.coordinate = coordinate
         self.message = message
         self.title = self.message
         self.info = info
+        self.img = img
+        
+    
     }
     
 }
